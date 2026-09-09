@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cells &amp; Communication — IB Biology AHL study set</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,300..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12262B;
+  --ink-soft:#46595E;
+  --ink-faint:#7C8B8E;
+  --paper:#EDF1EC;
+  --panel:#FFFFFF;
+  --line:#D2DAD2;
+  --line-soft:#E3E8E2;
+  --stain:#A32A62;
+  --stain-tint:#F7E9F0;
+  --teal:#1F736A;
+  --teal-tint:#E2EFEC;
+  --ochre:#A87516;
+  --ochre-tint:#F6EEDA;
+  --good:#1C7048;
+  --good-tint:#E2F0E8;
+  --bad:#AB3527;
+  --bad-tint:#F8E7E3;
+  --sans:'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --serif:'Newsreader', Georgia, 'Times New Roman', serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important; animation:none !important}
+}
+a{color:var(--teal)}
+button{font-family:inherit; font-size:inherit; cursor:pointer}
+:focus-visible{outline:2.5px solid var(--stain); outline-offset:2px; border-radius:2px}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,#F7F9F6 0%, var(--paper) 100%);
+  padding:26px 0 0;
+}
+.wrap{max-width:1180px; margin:0 auto; padding:0 22px}
+.mast-top{display:flex; flex-wrap:wrap; gap:18px; align-items:flex-end; justify-content:space-between}
+h1.title{
+  font-family:var(--sans); font-weight:700; font-size:clamp(26px,4.2vw,40px);
+  letter-spacing:-0.025em; margin:0; line-height:1.05;
+}
+.title span{display:block; font-weight:400; font-size:0.44em; letter-spacing:0.01em; color:var(--ink-soft); margin-top:8px}
+.mast-note{font-family:var(--serif); font-size:16px; color:var(--ink-soft); max-width:34ch; margin:0}
+
+/* progress spine */
+.spine{display:flex; gap:6px; flex-wrap:wrap; margin:22px 0 0; padding:0; list-style:none}
+.spine li{flex:1 1 150px; min-width:130px}
+.spine button{
+  width:100%; text-align:left; background:transparent; border:0; padding:10px 12px 12px;
+  border-top:3px solid var(--line); color:var(--ink-soft); border-radius:0;
+}
+.spine button:hover{background:#FFFFFF80}
+.spine button[data-on="1"]{border-top-color:var(--stain); color:var(--ink)}
+.spine .sp-name{display:block; font-weight:600; font-size:14px; color:var(--ink); letter-spacing:-0.01em}
+.spine .sp-bar{display:block; height:5px; background:var(--line-soft); margin-top:8px; position:relative}
+.spine .sp-bar i{position:absolute; inset:0 auto 0 0; width:0; background:var(--teal); transition:width .35s ease}
+.spine .sp-stat{display:block; font-size:12.5px; margin-top:6px; color:var(--ink-faint); font-variant-numeric:tabular-nums}
+
+/* mode tabs */
+.modes{display:flex; gap:0; margin:24px 0 -1px; border-bottom:1px solid var(--line)}
+.modes button{
+  background:transparent; border:1px solid transparent; border-bottom:0;
+  padding:11px 18px; font-weight:600; font-size:15px; color:var(--ink-soft);
+  border-radius:6px 6px 0 0;
+}
+.modes button[aria-selected="true"]{background:var(--panel); border-color:var(--line); color:var(--ink)}
+
+/* ---------- layout ---------- */
+.shell{max-width:1180px; margin:0 auto; padding:0 22px 90px; display:grid; grid-template-columns:212px minmax(0,1fr); gap:36px}
+@media(max-width:860px){ .shell{grid-template-columns:1fr; gap:0} }
+
+nav.rail{position:sticky; top:14px; align-self:start; padding-top:28px}
+@media(max-width:860px){ nav.rail{position:static; padding:18px 0 0} }
+nav.rail h2{font-size:12px; font-weight:600; color:var(--ink-faint); margin:0 0 10px; letter-spacing:0.04em}
+nav.rail ol{list-style:none; margin:0; padding:0; counter-reset:sec}
+nav.rail li{margin-bottom:2px}
+nav.rail a{
+  display:block; padding:7px 10px 7px 12px; text-decoration:none; color:var(--ink-soft);
+  font-size:14.5px; border-left:2px solid var(--line-soft); line-height:1.35;
+}
+nav.rail a:hover{color:var(--ink); border-left-color:var(--stain); background:#FFFFFF90}
+nav.rail a.on{color:var(--ink); font-weight:600; border-left-color:var(--stain); background:var(--panel)}
+
+main{padding-top:28px; min-width:0}
+
+/* ---------- study guide ---------- */
+article.topic{
+  background:var(--panel); border:1px solid var(--line); border-radius:4px;
+  padding:30px 34px 34px; margin-bottom:26px;
+}
+@media(max-width:600px){ article.topic{padding:22px 18px 26px} }
+article.topic > h2{
+  font-size:24px; letter-spacing:-0.02em; margin:0 0 4px; font-weight:700;
+}
+.code{font-size:13px; color:var(--stain); font-weight:600; letter-spacing:0.02em}
+.lede{font-family:var(--serif); font-size:18px; line-height:1.55; color:var(--ink-soft); margin:10px 0 26px; max-width:66ch}
+article.topic h3{
+  font-size:17.5px; margin:32px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line-soft);
+  letter-spacing:-0.01em;
+}
+article.topic h4{font-size:15px; margin:20px 0 6px; color:var(--ink)}
+article.topic p, article.topic li{font-family:var(--serif); font-size:16.5px; line-height:1.62; max-width:72ch}
+article.topic ul, article.topic ol{padding-left:20px; margin:8px 0}
+article.topic li{margin-bottom:5px}
+article.topic li::marker{color:var(--ink-faint)}
+strong{font-weight:600}
+.term{font-family:var(--sans); font-weight:600; font-size:0.94em; color:var(--ink)}
+
+table.data{border-collapse:collapse; width:100%; margin:14px 0 6px; font-size:15px; font-family:var(--sans)}
+table.data th{text-align:left; font-weight:600; padding:8px 10px; border-bottom:2px solid var(--ink); font-size:13.5px}
+table.data td{padding:9px 10px; border-bottom:1px solid var(--line-soft); vertical-align:top; line-height:1.45}
+table.data tr:hover td{background:#FAFBF9}
+.scroller{overflow-x:auto; margin:0 -4px; padding:0 4px}
+
+.callout{border-left:3px solid var(--ochre); background:var(--ochre-tint); padding:12px 16px; margin:16px 0; border-radius:0 4px 4px 0}
+.callout p{margin:0; font-size:15.5px}
+.callout .ctag{font-family:var(--sans); font-weight:600; font-size:12.5px; color:var(--ochre); display:block; margin-bottom:3px}
+.callout.link{border-left-color:var(--teal); background:var(--teal-tint)}
+.callout.link .ctag{color:var(--teal)}
+
+.seq{list-style:none; padding:0; counter-reset:step; margin:14px 0}
+.seq li{counter-increment:step; position:relative; padding-left:34px; margin-bottom:10px}
+.seq li::before{
+  content:counter(step); position:absolute; left:0; top:1px; width:22px; height:22px;
+  border:1.5px solid var(--stain); color:var(--stain); border-radius:50%;
+  font-family:var(--sans); font-size:12px; font-weight:600; display:grid; place-items:center;
+}
+.drill{
+  display:inline-flex; align-items:center; gap:8px; margin-top:22px;
+  background:var(--ink); color:#fff; border:0; padding:9px 16px; border-radius:3px;
+  font-size:14px; font-weight:600;
+}
+.drill:hover{background:var(--stain)}
+
+/* ---------- practice ---------- */
+.pbar{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:18px}
+.chips{display:flex; flex-wrap:wrap; gap:6px}
+.chip{
+  border:1px solid var(--line); background:var(--panel); color:var(--ink-soft);
+  padding:6px 12px; border-radius:20px; font-size:13.5px; font-weight:500;
+}
+.chip[data-on="1"]{background:var(--ink); border-color:var(--ink); color:#fff}
+.grow{flex:1}
+.pbtn{border:1px solid var(--line); background:var(--panel); padding:7px 14px; border-radius:3px; font-size:14px; font-weight:500}
+.pbtn:hover{border-color:var(--ink)}
+.pbtn.solid{background:var(--ink); color:#fff; border-color:var(--ink)}
+.pbtn.solid:hover{background:var(--stain); border-color:var(--stain)}
+
+.qcard{background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:26px 30px 28px}
+@media(max-width:600px){ .qcard{padding:20px 16px 22px} }
+.qmeta{display:flex; justify-content:space-between; gap:12px; font-size:13px; color:var(--ink-faint); margin-bottom:14px; font-variant-numeric:tabular-nums}
+.qmeta b{color:var(--stain); font-weight:600}
+.qtext{font-family:var(--serif); font-size:19.5px; line-height:1.45; margin:0 0 20px; max-width:70ch}
+.hintline{font-size:13.5px; color:var(--ink-faint); margin:-10px 0 18px}
+
+.opts{list-style:none; margin:0; padding:0; display:grid; gap:8px}
+.opt{
+  display:flex; gap:12px; align-items:flex-start; width:100%; text-align:left;
+  border:1px solid var(--line); background:var(--panel); border-radius:4px;
+  padding:12px 14px; font-family:var(--serif); font-size:16.5px; line-height:1.45; color:var(--ink);
+}
+.opt:hover:not(:disabled){border-color:var(--ink); background:#FBFCFA}
+.opt .key{
+  flex:0 0 auto; width:22px; height:22px; border-radius:3px; border:1px solid var(--line);
+  font-family:var(--sans); font-size:12px; font-weight:600; display:grid; place-items:center;
+  color:var(--ink-faint); margin-top:1px;
+}
+.opt[data-sel="1"]{border-color:var(--ink)}
+.opt[data-sel="1"] .key{background:var(--ink); color:#fff; border-color:var(--ink)}
+.opt[data-state="right"]{border-color:var(--good); background:var(--good-tint)}
+.opt[data-state="right"] .key{background:var(--good); border-color:var(--good); color:#fff}
+.opt[data-state="wrong"]{border-color:var(--bad); background:var(--bad-tint)}
+.opt[data-state="wrong"] .key{background:var(--bad); border-color:var(--bad); color:#fff}
+.opt:disabled{cursor:default; opacity:1}
+
+.matchgrid{display:grid; gap:8px; margin:0}
+.mrow{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:10px; align-items:center;
+  border:1px solid var(--line-soft); border-radius:4px; padding:9px 12px; background:#FBFCFA}
+@media(max-width:600px){ .mrow{grid-template-columns:1fr; gap:6px} }
+.mrow .mtext{font-family:var(--serif); font-size:16px; line-height:1.4}
+.mrow select{
+  font-family:var(--sans); font-size:14.5px; padding:8px 10px; border:1px solid var(--line);
+  border-radius:3px; background:var(--panel); color:var(--ink); width:100%;
+}
+.mrow[data-state="right"]{background:var(--good-tint); border-color:var(--good)}
+.mrow[data-state="wrong"]{background:var(--bad-tint); border-color:var(--bad)}
+.mfix{font-size:13.5px; color:var(--bad); font-family:var(--sans); margin-top:4px; grid-column:1/-1}
+
+.verdict{margin-top:20px; border-radius:4px; padding:14px 16px; border:1px solid var(--line)}
+.verdict[data-v="right"]{background:var(--good-tint); border-color:var(--good)}
+.verdict[data-v="wrong"]{background:var(--bad-tint); border-color:var(--bad)}
+.verdict h5{margin:0 0 5px; font-size:14.5px}
+.verdict[data-v="right"] h5{color:var(--good)}
+.verdict[data-v="wrong"] h5{color:var(--bad)}
+.verdict p{margin:0; font-family:var(--serif); font-size:16px; line-height:1.55}
+.nav-row{display:flex; gap:10px; margin-top:20px; align-items:center; flex-wrap:wrap}
+.kbd{font-size:12.5px; color:var(--ink-faint); margin-left:auto}
+.kbd kbd{font-family:var(--sans); border:1px solid var(--line); border-bottom-width:2px; border-radius:3px; padding:1px 5px; font-size:11.5px; background:#fff}
+
+/* results */
+.result{background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:30px 32px}
+.score{font-size:56px; font-weight:700; letter-spacing:-0.03em; line-height:1; font-variant-numeric:tabular-nums}
+.score small{font-size:20px; font-weight:400; color:var(--ink-faint)}
+.miss{border-top:1px solid var(--line-soft); padding:14px 0}
+.miss p{margin:0 0 4px; font-family:var(--serif); font-size:16px}
+.miss em{color:var(--bad); font-style:normal; font-size:14px; font-family:var(--sans)}
+.empty{background:var(--panel); border:1px dashed var(--line); border-radius:4px; padding:30px; text-align:center; color:var(--ink-soft); font-family:var(--serif); font-size:17px}
+.hide{display:none !important}
+footer.foot{border-top:1px solid var(--line); margin-top:20px; padding:20px 0 0; font-size:13.5px; color:var(--ink-faint)}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="mast-top">
+      <h1 class="title">Cells &amp; Communication<span>IB Biology AHL — membranes, structures, signalling, origins, viruses</span></h1>
+      <p class="mast-note">Read a section, then drill it. Every question tells you why the answer works, so a wrong click is still useful.</p>
+    </div>
+    <ul class="spine" id="spine"></ul>
+    <div class="modes" role="tablist">
+      <button role="tab" id="tab-study" aria-selected="true" onclick="setMode('study')">Study guide</button>
+      <button role="tab" id="tab-practice" aria-selected="false" onclick="setMode('practice')">Practice</button>
+      <button role="tab" id="tab-exam" aria-selected="false" onclick="setMode('exam')">Mock test</button>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="rail" id="rail" aria-label="Sections"></nav>
+  <main>
+
+  <!-- ===================== STUDY VIEW ===================== -->
+  <div id="view-study">
+
+  <article class="topic" id="s-origins">
+    <span class="code">A2.1 · A2.2.12–14</span>
+    <h2>Origins of cells</h2>
+    <p class="lede">How you get from a puddle of inorganic chemistry to something that can keep itself alive, copy itself, and eventually build a caribou.</p>
+
+    <h3>What counts as alive</h3>
+    <p>Cell theory says the cell is the smallest unit of life, all living things are made of cells or cell products, and cells only come from pre-existing cells. That last point is what creates the puzzle: the first cell had nothing to come from.</p>
+    <p>A living thing is <strong>self-sustaining</strong>, meaning it carries out all the functions of life on its own: metabolism, reproduction, sensitivity, homeostasis, excretion, nutrition, growth, and movement. Nothing smaller than a cell manages the whole list.</p>
+    <p>Viruses fail the test. They have no metabolism of their own, cannot replicate without hijacking a host, and do not grow. That makes them non-living, even though they carry genetic material.</p>
+
+    <h3>Conditions on early Earth (A2.1.1)</h3>
+    <ul>
+      <li><strong>Reducing atmosphere</strong> with essentially no free oxygen, so no ozone layer and no oxidation of new organic molecules.</li>
+      <li><strong>Intense UV radiation</strong> reaching the surface, supplying free energy for chemical reactions.</li>
+      <li><strong>Volcanic activity</strong> releasing CH<sub>4</sub>, CO<sub>2</sub>, ammonia and water vapour into the atmosphere.</li>
+      <li><strong>High temperatures</strong> from volcanism and a greenhouse effect, speeding up reactions.</li>
+      <li><strong>Liquid water</strong> as a solvent and reagent.</li>
+    </ul>
+    <div class="callout"><span class="ctag">Exam trap</span><p>Oxygen is the giveaway. An oxygen-rich early atmosphere would have oxidised organic molecules as fast as they formed, so "a reducing atmosphere" is the correct condition, never "abundant free oxygen".</p></div>
+
+    <h3>Abiogenesis, in four steps (A2.1.3)</h3>
+    <ol class="seq">
+      <li>Non-living synthesis of simple <strong>organic monomers</strong> from inorganic molecules.</li>
+      <li>Assembly of those monomers into <strong>polymers</strong>.</li>
+      <li>Some polymers gain the ability to <strong>self-replicate</strong>.</li>
+      <li>Replicating molecules become <strong>packaged inside membranes</strong>, forming protocells.</li>
+    </ol>
+    <p>This is hard to test directly. Pre-biotic conditions cannot be reproduced exactly, and protocells left no fossils, so the evidence is indirect and inferential.</p>
+
+    <h3>Miller–Urey (A2.1.4)</h3>
+    <p>Miller and Urey sealed a flask system that modelled early Earth: water boiled to vapour, a mixture of gases with no oxygen, an electrical discharge standing in for lightning, and a condenser to cool the mixture back to liquid. After a week the condensed liquid contained amino acids and other organic molecules.</p>
+    <div class="callout"><span class="ctag">Exam trap</span><p>The experiment showed that <em>organic molecules</em> can form from non-living materials. It did not produce cells, did not produce life, and said nothing about RNA replication. Any answer claiming cells formed is wrong.</p></div>
+
+    <h3>Protocells and membranes (A2.1.5)</h3>
+    <p>Fatty acids in water spontaneously form <strong>micelles</strong>, because the hydrophobic tails cluster together to avoid the polar solvent. When polar organic monomers are present they interact with the glycerol/phosphate heads, and the structure rearranges into a <strong>spherical bilayer, or vesicle</strong>.</p>
+    <p>The point of a membrane is separation. Once a hydrophobic barrier exists, the chemistry inside the compartment can differ from the chemistry outside, which is the precondition for metabolism.</p>
+
+    <h3>RNA world (A2.1.6)</h3>
+    <p>A self-sustaining system needs a molecule that stores information and a molecule that catalyses reactions. In modern cells those jobs are split between DNA and proteins, which creates a chicken-and-egg problem: proteins are built using instructions in DNA, and DNA is replicated by protein enzymes. Neither could come first.</p>
+    <p>RNA solves it because it does both. It carries a base sequence, it can self-replicate, and some RNAs are catalytic (ribozymes, and the catalytic core of the ribosome). RNA is therefore presumed to be the first genetic material, with DNA taking over later for stability and proteins taking over catalysis for diversity.</p>
+
+    <h3>Water: why it matters and where it came from (A1.1.7–8)</h3>
+    <ul>
+      <li>Polarity drives non-polar lipids to form bilayers spontaneously.</li>
+      <li>High specific heat capacity buffers temperature, supporting stable internal conditions.</li>
+      <li>It dissolves polar and charged solutes, so reagents can collide and react.</li>
+      <li>It is a reagent itself in condensation and hydrolysis reactions.</li>
+    </ul>
+    <p>Earth was probably too hot and too low in mass early on to hold onto water vapour, so much of it is thought to have arrived on <strong>asteroids and comets</strong> carrying ice, once Earth had cooled and gained enough mass to retain it. This is why the search for extraterrestrial life focuses on liquid water and on the <strong>Goldilocks zone</strong>: the orbital band around a star where a planet is neither too hot nor too cold for liquid water. Hotter stars push that band further out. The planet also needs enough mass and a suitable atmosphere to keep the water on the surface.</p>
+
+    <h3>LUCA (A2.1.7–9)</h3>
+    <p><strong>LUCA</strong> is the last universal common ancestor: the inferred population of cells from which all life today descends. It is not the first cell (that would be FUCA), and other lineages almost certainly existed alongside it and went extinct.</p>
+    <h4>Evidence that LUCA existed</h4>
+    <ol>
+      <li><strong>Universality of the genetic code.</strong> Almost every organism reads the same codons as the same amino acids, with only minor variations.</li>
+      <li><strong>Conserved gene sequences.</strong> A core set of genes is shared across bacteria and archaea, which is hard to explain unless they were inherited from a common ancestor.</li>
+    </ol>
+    <h4>What conserved genes suggest LUCA was like</h4>
+    <p>An <strong>anaerobe</strong> (oxygen was absent and would have been toxic), a <strong>chemoautotroph</strong> (energy from oxidising inorganic chemicals rather than from light or from eating others), and a <strong>thermophile</strong> (adapted to high temperature). Together these point to hydrothermal vents.</p>
+    <h4>Dating the first cells</h4>
+    <ul>
+      <li><strong>Biosignatures:</strong> chemicals produced only by living processes, found in rock layers that can be radiometrically dated.</li>
+      <li><strong>Stromatolites:</strong> layered sedimentary structures built by microbial mats. The oldest are roughly 3.45 billion years old.</li>
+      <li><strong>Molecular clocks:</strong> counting differences in conserved sequences to estimate time since divergence, assuming a roughly constant mutation rate.</li>
+      <li>Fossilised bacteria in mineral precipitates around ancient vents date to about 3.7 billion years.</li>
+    </ul>
+    <div class="callout link"><span class="ctag">Watch the wording</span><p>Horizontal gene transfer means the LUCA "genome" is best read as representative of a whole community of early organisms, not one individual cell.</p></div>
+
+    <h3>Endosymbiosis (A2.2.12)</h3>
+    <p>Eukaryotes are thought to have arisen when one prokaryote engulfed another and did not digest it. The engulfed aerobic bacterium became the mitochondrion; a later engulfment of a photosynthetic bacterium produced the chloroplast. Membrane in-folding of the host produced the nucleus and endomembrane system.</p>
+    <p>Evidence, remembered as <strong>MAD DR</strong>:</p>
+    <div class="scroller"><table class="data">
+      <tr><th>Feature</th><th>Why it points to endosymbiosis</th></tr>
+      <tr><td><strong>M</strong>embranes</td><td>Double membrane — the inner one is the original bacterial membrane, the outer one from the host vesicle.</td></tr>
+      <tr><td><strong>A</strong>ntibiotics</td><td>Susceptible to antibiotics that target bacteria.</td></tr>
+      <tr><td><strong>D</strong>NA</td><td>Their own DNA, which is naked and circular like bacterial DNA.</td></tr>
+      <tr><td><strong>D</strong>ivision</td><td>Reproduce by a fission-like process, independently of the cell.</td></tr>
+      <tr><td><strong>R</strong>ibosomes</td><td>70S ribosomes, the prokaryotic size, not the eukaryotic 80S.</td></tr>
+    </table></div>
+
+    <h3>Multicellularity and differentiation (A2.2.13–14)</h3>
+    <p>Multicellularity has evolved repeatedly, and it pays off in three ways: organisms can exceed the size limit imposed by surface area to volume ratio, they can outlive their individual cells, and they can specialise cell types. Groups of cells acting together produce <strong>emergent properties</strong> that no single cell has.</p>
+    <p>Specialisation happens through <strong>differential gene expression</strong>. Every cell keeps the whole genome; what differs is which genes are switched on, often in response to chemical or environmental signals. The cost of multicellularity is cancer, which is what happens when one cell's growth stops being controlled.</p>
+    <button class="drill" onclick="drill('origins')">Drill this topic</button>
+  </article>
+  <article class="topic" id="s-membranes">
+    <span class="code">B2.1.11–17</span>
+    <h2>Cell membranes</h2>
+    <p class="lede">A fluid, selectively permeable bilayer that decides what gets in, what gets out, and how cells stick to each other.</p>
+
+    <h3>The bilayer, quickly</h3>
+    <p>Phospholipids are <strong>amphipathic</strong>: a polar, hydrophilic phosphate head and two non-polar, hydrophobic fatty acid tails. In water they assemble into a bilayer with the tails facing inward, held together by hydrophobic interactions. Proteins are embedded in and on the bilayer. The membrane is fluid, so components drift laterally, and selectively permeable, so small non-polar molecules cross freely while large or charged particles need help.</p>
+
+    <h3>Fatty acid composition and fluidity (B2.1.11)</h3>
+    <div class="scroller"><table class="data">
+      <tr><th></th><th>Saturated</th><th>Unsaturated</th></tr>
+      <tr><td>Structure</td><td>No C=C double bonds, straight tails</td><td>One or more C=C double bonds, kinked tails</td></tr>
+      <tr><td>Packing</td><td>Pack tightly together</td><td>Kinks prevent tight packing</td></tr>
+      <tr><td>Effect on membrane</td><td>Less fluid, more rigid</td><td>More fluid</td></tr>
+      <tr><td>Melting point</td><td>Higher</td><td>Lower</td></tr>
+    </table></div>
+    <p>Organisms adjust the ratio to match their environment. Antarctic cod living in freezing water have a high proportion of unsaturated fatty acids so their membranes stay fluid rather than freezing solid. Caribou have more unsaturated fatty acids in cells at their extremities, where it is coldest. Some bacteria produce <strong>desaturase enzymes</strong> to add double bonds when temperatures drop.</p>
+    <div class="callout"><span class="ctag">Exam trap</span><p>Cold-adapted membranes are not being "strengthened" or "stabilised" by unsaturation, and unsaturation lowers rather than raises the melting point. The whole point is <em>maintaining fluidity at low temperature by preventing tight packing</em>.</p></div>
+
+    <h3>Cholesterol (B2.1.12)</h3>
+    <p>Cholesterol sits between phospholipids in animal cell membranes and works in both directions:</p>
+    <ul>
+      <li><strong>At high temperatures</strong> it restrains phospholipid movement, so it <em>reduces</em> fluidity and keeps the membrane from becoming too permeable.</li>
+      <li><strong>At low temperatures</strong> it wedges between tails and stops them packing into a solid gel, so it <em>increases</em> fluidity.</li>
+    </ul>
+    <p>That two-way action is why it is described as a bidirectional modulator, or a fluidity buffer.</p>
+
+    <h3>Vesicular transport (B2.1.13)</h3>
+    <p>Because the bilayer is fluid it can break and reseal, which is what makes vesicle traffic possible.</p>
+    <div class="scroller"><table class="data">
+      <tr><th>Process</th><th>Direction</th><th>What moves</th><th>Example</th></tr>
+      <tr><td>Phagocytosis</td><td>In</td><td>Solid material</td><td>A leukocyte engulfing a pathogen</td></tr>
+      <tr><td>Pinocytosis</td><td>In</td><td>Dissolved material and fluid</td><td>Intestinal cells taking in dissolved nutrients</td></tr>
+      <tr><td>Exocytosis</td><td>Out</td><td>Vesicle contents</td><td>Neurons releasing neurotransmitter into the synapse</td></tr>
+    </table></div>
+    <p>Endocytosis brings material in <em>without it crossing the bilayer</em>, which is the reason large particles can enter at all.</p>
+
+    <h3>Directional transport: uniport, symport, antiport (B2.1.14–16)</h3>
+    <div class="scroller"><table class="data">
+      <tr><th>Type</th><th>Definition</th><th>Worked example</th></tr>
+      <tr><td>Uniport</td><td>One solute, one direction</td><td>GLUT transporters moving glucose into red blood cells; voltage-gated K<sup>+</sup> channels; ligand-gated Na<sup>+</sup> channels</td></tr>
+      <tr><td>Symport</td><td>Two solutes, same direction</td><td>Sodium-dependent glucose cotransporter (SGLT) in intestine and kidney; H<sup>+</sup>/K<sup>+</sup> uptake in plant roots</td></tr>
+      <tr><td>Antiport</td><td>Two solutes, opposite directions</td><td>Na<sup>+</sup>/K<sup>+</sup> pump; Na<sup>+</sup>/Ca<sup>2+</sup> exchanger</td></tr>
+    </table></div>
+
+    <h4>Gated ion channels in neurons</h4>
+    <p><strong>Voltage-gated</strong> channels open in response to a change in membrane potential — potassium channels opening during repolarisation, for instance. <strong>Ligand-gated</strong> channels open when a signalling molecule binds; the nicotinic acetylcholine receptor on a muscle fibre is the standard example, and the ion influx through it triggers contraction.</p>
+
+    <h4>Sodium–potassium pump (direct active transport)</h4>
+    <ol class="seq">
+      <li>Three Na<sup>+</sup> from the cytoplasm bind to the pump.</li>
+      <li>ATP hydrolysis phosphorylates the pump, changing its conformation and expelling the Na<sup>+</sup>.</li>
+      <li>Two K<sup>+</sup> from outside bind.</li>
+      <li>The phosphate is released, the pump returns to its original shape, and K<sup>+</sup> enters the cell.</li>
+    </ol>
+    <p>Net result per cycle: 3 Na<sup>+</sup> out, 2 K<sup>+</sup> in, one ATP spent. It is an antiporter and it is directly active because ATP is hydrolysed by the transporter itself.</p>
+
+    <h4>SGLT (indirect active transport)</h4>
+    <p>The Na<sup>+</sup>/K<sup>+</sup> pump keeps intracellular Na<sup>+</sup> low, creating an electrochemical gradient. The cotransporter lets Na<sup>+</sup> fall down that gradient and uses the energy released to drag glucose <em>against</em> its concentration gradient into the cell. No ATP is hydrolysed by the cotransporter, so this is <strong>indirect</strong> active transport. It happens in the small intestine and kidney tubules.</p>
+    <div class="callout"><span class="ctag">Exam trap</span><p>"No ATP used at this protein" does not make it passive. Glucose is moving against its gradient, so it is still active transport, just powered second-hand by a gradient that ATP built.</p></div>
+
+    <h3>Cell adhesion and junctions (B2.1.17)</h3>
+    <p>Cell adhesion molecules bind cells to each other and to the extracellular matrix, which is the protein scaffold surrounding cells. Adhesion is what makes tissues, and therefore multicellularity, possible.</p>
+    <div class="scroller"><table class="data">
+      <tr><th>Junction</th><th>Function</th></tr>
+      <tr><td>Anchoring junctions</td><td>Hold cells together mechanically within a tissue layer</td></tr>
+      <tr><td>Tight junctions</td><td>Create an impermeable seal between adjacent cells, blocking leakage between them</td></tr>
+      <tr><td>Gap junctions</td><td>Channels that let ions and small molecules pass directly between linked cells</td></tr>
+      <tr><td>Plasmodesmata</td><td>The plant equivalent of gap junctions, through the cell wall</td></tr>
+    </table></div>
+    <p>Loss of adhesion is why malignant tumours metastasise: cells that no longer stick to their neighbours can detach, enter the blood or lymph, and seed secondary tumours elsewhere. Note that loss of growth control and loss of adhesion are two different failures — metastasis specifically requires the adhesion failure.</p>
+    <button class="drill" onclick="drill('membranes')">Drill this topic</button>
+  </article>
+  <article class="topic" id="s-structures">
+    <span class="code">B2.2.4–8 · B2.3.7–10</span>
+    <h2>Cell structures and specialisation</h2>
+    <p class="lede">Compartments with their own internal chemistry, and cells whose shape is an argument about their job.</p>
+
+    <h3>Why compartmentalise</h3>
+    <p>A membrane-bound organelle can hold a different pH, different enzymes and different concentrations from the cytoplasm. That lets incompatible reactions run at the same time in one cell, and lets each process happen under its optimum conditions.</p>
+
+    <h3>Organelle reference</h3>
+    <div class="scroller"><table class="data">
+      <tr><th>Organelle</th><th>Identifying features</th><th>Function</th></tr>
+      <tr><td>Nucleus</td><td>Double membrane continuous with the ER, nuclear pores, chromatin</td><td>Stores genetic material, site of transcription</td></tr>
+      <tr><td>Ribosome</td><td>Small + large subunit, no membrane; 80S free or rER-bound, 70S in mitochondria/chloroplasts/prokaryotes</td><td>Protein synthesis</td></tr>
+      <tr><td>Mitochondrion</td><td>Double membrane, cristae, matrix, circular DNA, 70S ribosomes</td><td>Aerobic respiration, ATP production</td></tr>
+      <tr><td>Chloroplast</td><td>Double membrane, thylakoids stacked into grana, lamellae, stroma, circular DNA</td><td>Photosynthesis</td></tr>
+      <tr><td>Golgi apparatus</td><td>Stack of flattened sacs (cisternae), cis face toward ER, trans face toward membrane</td><td>Modifies, sorts and exports proteins in vesicles</td></tr>
+      <tr><td>Lysosome</td><td>Single-membrane vesicle, hydrolytic enzymes, acidic</td><td>Breaks down waste and debris</td></tr>
+      <tr><td>Peroxisome</td><td>Single-membrane vesicle</td><td>Digests toxic metabolites</td></tr>
+      <tr><td>Vacuole</td><td>Large single-membrane vesicle</td><td>Stores excess fluid, regulates pH</td></tr>
+    </table></div>
+
+    <h3>The nucleus and its double membrane (B2.2.6)</h3>
+    <ul>
+      <li>Two membranes create the space for <strong>nuclear pores</strong>, which allow selective two-way traffic: histones and transcription factors in, mRNA and tRNA out.</li>
+      <li>The envelope can <strong>disassemble into vesicles</strong> during prophase and reassemble into two nuclei at telophase, which a single membrane could not do as cleanly.</li>
+      <li>It is continuous with the ER, linking the nucleus to the endomembrane system.</li>
+    </ul>
+
+    <h3>Free versus bound ribosomes (B2.2.7)</h3>
+    <p>Both types have a small subunit that binds mRNA and a large subunit that binds tRNA, and both assemble at the start of translation. The difference is destination.</p>
+    <ul>
+      <li><strong>Free ribosomes</strong> float in the cytosol and make proteins that stay and work in the cytosol.</li>
+      <li><strong>rER-bound ribosomes</strong> make proteins that enter the endomembrane system: secreted proteins, membrane proteins, and enzymes destined for organelles such as lysosomes.</li>
+    </ul>
+    <div class="callout"><span class="ctag">Exam trap</span><p>Free ribosomes are not fixed in place, and they are not the ones making secreted protein. Reverse those two claims and you have the two commonest distractors.</p></div>
+
+    <h3>Mitochondrion and chloroplast adaptations (B2.2.4–5)</h3>
+    <div class="scroller"><table class="data">
+      <tr><th>Mitochondrion</th><th>Adaptation</th></tr>
+      <tr><td>Cristae</td><td>Folded inner membrane raises surface area for the electron transport chain</td></tr>
+      <tr><td>Matrix</td><td>Holds Krebs cycle enzymes at a suitable pH</td></tr>
+      <tr><td>Intermembrane space</td><td>Small volume, so protons accumulate quickly and a steep gradient forms</td></tr>
+      <tr><td>Inner membrane</td><td>Carries the ETC and ATP synthase for oxidative phosphorylation</td></tr>
+      <tr><td>Outer membrane</td><td>Transport proteins shuttle pyruvate in</td></tr>
+    </table></div>
+    <div class="scroller"><table class="data">
+      <tr><th>Chloroplast</th><th>Adaptation</th></tr>
+      <tr><td>Thylakoids</td><td>Hold the ETC and ATP synthase for photophosphorylation; small internal volume accumulates ions fast</td></tr>
+      <tr><td>Grana</td><td>Stacked thylakoids maximise surface area for light absorption</td></tr>
+      <tr><td>Lamellae</td><td>Connect and separate the grana</td></tr>
+      <tr><td>Stroma</td><td>Calvin cycle enzymes at a suitable pH</td></tr>
+      <tr><td>Double membrane</td><td>Evidence of independent, endosymbiotic origin</td></tr>
+    </table></div>
+
+    <h3>Golgi apparatus and secretion (B2.2.8)</h3>
+    <p>The Golgi is a stack of cisternae between the ER (cis face) and the plasma membrane (trans face). Each sac carries out a specific modification as material moves through, and the Golgi sorts and exports secretory proteins, glycoproteins, membrane proteins, glycolipids and plant cell wall material.</p>
+    <ul>
+      <li><strong>Constitutive secretion:</strong> vesicles are released continuously, with no signal required.</li>
+      <li><strong>Regulated secretion:</strong> vesicles are stored and released only when a chemical signal (ligand) arrives, allowing a controlled or sustained release.</li>
+    </ul>
+
+    <h3>Vesicles and clathrin (B2.2.8)</h3>
+    <p>Vesicles store material and shuttle it between compartments, moved along the cytoskeleton by motor proteins such as kinesin and dynein. Lysosomes, peroxisomes and vacuoles are all vesicle types.</p>
+    <ol class="seq">
+      <li>Adaptor proteins mark the patch of membrane where a vesicle should form, in response to ligand signalling.</li>
+      <li><strong>Clathrin</strong>, a triskelion-shaped coat protein, is recruited and links into a lattice-like cage.</li>
+      <li>The cage curves the membrane into a bud.</li>
+      <li><strong>Dynamin</strong> pinches the neck and cleaves the bud free.</li>
+      <li>The clathrin coat dissociates and is reused; the vesicle travels on.</li>
+    </ol>
+    <div class="callout"><span class="ctag">Exam trap</span><p>Clathrin shapes the bud and then leaves. It is not a channel, it does not stay permanently in the membrane, and it is not the motor that walks vesicles along microtubules.</p></div>
+
+    <h3>Specialised cells (B2.3 and Cell Adaptations)</h3>
+    <div class="scroller"><table class="data">
+      <tr><th>Cell</th><th>Adaptation</th><th>Why</th></tr>
+      <tr><td>Phagocytic leukocyte</td><td>Many lysosomes</td><td>Digest engulfed pathogens</td></tr>
+      <tr><td>Neuron</td><td>Many mitochondria</td><td>ATP for the active transport that maintains resting potential</td></tr>
+      <tr><td>Endocrine cell</td><td>Many secretory vesicles, extensive endomembrane system</td><td>High-volume hormone secretion</td></tr>
+      <tr><td>Skeletal muscle fibre</td><td>Fused, multinucleated fibres packed with myofibrils</td><td>Maximise contraction force along one axis</td></tr>
+      <tr><td>Cardiac muscle cell</td><td>Branched, single-nucleus cells joined by gap junctions in intercalated discs</td><td>Fast three-dimensional conduction and synchronised contraction</td></tr>
+      <tr><td>Sperm</td><td>Small and streamlined, flagellum, acrosome</td><td>Motility and penetration of the egg</td></tr>
+      <tr><td>Egg (ovum)</td><td>Large, many organelles and cytoplasm, cortical granules</td><td>Supplies the zygote; granules block polyspermy</td></tr>
+      <tr><td>Epithelial barrier cell</td><td>Increased surface area plus cell junctions</td><td>Efficient exchange while keeping the barrier sealed</td></tr>
+    </table></div>
+
+    <h3>Surface area to volume ratio (B2.3.7)</h3>
+    <p>Exchange happens across a surface, but demand scales with volume. As a cell grows, volume rises faster than surface area, so the ratio falls and exchange becomes limiting. Cells specialised for exchange fight this two ways: <strong>reduce diffusion distance</strong> by being flat and thin, and <strong>increase surface area</strong> with projections. Examples include squamous cells, biconcave red blood cells, invaginated kidney tubules, and microvilli on tubule and intestinal cells.</p>
+
+    <h3>Pneumocytes (B2.3.8)</h3>
+    <ul>
+      <li><strong>Type I:</strong> extremely thin squamous cells forming most of the alveolar surface, giving a short diffusion path for gas exchange.</li>
+      <li><strong>Type II:</strong> cuboidal cells that secrete <strong>surfactant</strong>, which lowers surface tension and stops alveoli collapsing.</li>
+    </ul>
+    <div class="callout"><span class="ctag">Exam trap</span><p>The pair is nearly always tested by swapping the two. Type I is thin and for gas exchange; Type II makes surfactant.</p></div>
+    <button class="drill" onclick="drill('structures')">Drill this topic</button>
+  </article>
+  <article class="topic" id="s-signalling">
+    <span class="code">C2.1.1–14</span>
+    <h2>Cell signalling</h2>
+    <p class="lede">One molecule arrives at a cell surface and a million molecules inside change behaviour. This is the topic with the most moving parts, so get the vocabulary exact.</p>
+
+    <h3>The core sequence</h3>
+    <p><strong>Signal → reception → transduction → response.</strong> A <strong>ligand</strong> is the chemical messenger that starts it. A <strong>receptor</strong> is a protein with a binding site complementary to that ligand; binding causes a conformational change in the receptor, which triggers the pathway. Transduction is the conversion of the chemical signal into a cellular response, usually through a relay that amplifies it.</p>
+    <div class="callout"><span class="ctag">Vocabulary check</span><p>The ligand is the signal, not the receptor and not the G protein. In an adrenaline question, adrenaline is the ligand, the GPCR is the receptor, GTP is a nucleotide that switches the G protein on, and cAMP is the second messenger.</p></div>
+
+    <h3>Quorum sensing (C2.1.2)</h3>
+    <p>Bacteria coordinate behaviour by population density. Each cell releases a ligand called an <strong>autoinducer</strong>. As the population grows, autoinducer concentration rises, and once it passes a <strong>threshold</strong> it triggers transcriptional changes across the whole population at once.</p>
+    <p><em>Vibrio fischeri</em> uses quorum sensing to produce light. It lives inside the bobtail squid in a mutualism: the bacteria get organic nutrients, and the squid gets counterillumination camouflage that hides its silhouette from predators below.</p>
+
+    <h3>Range of signalling (C2.1.5)</h3>
+    <div class="scroller"><table class="data">
+      <tr><th>Type</th><th>Target</th><th>Example</th></tr>
+      <tr><td>Autocrine</td><td>The cell that released the signal</td><td>Activated helper T cells driving their own clonal expansion</td></tr>
+      <tr><td>Paracrine</td><td>Nearby cells</td><td>A neuron releasing neurotransmitter across a synapse</td></tr>
+      <tr><td>Endocrine</td><td>Distant cells, via the bloodstream</td><td>Insulin, adrenaline and other hormones</td></tr>
+      <tr><td>Quorum sensing</td><td>A whole bacterial population, density-dependent</td><td><em>Vibrio fischeri</em> bioluminescence</td></tr>
+    </table></div>
+
+    <h3>Signalling molecules in animals (C2.1.3–4)</h3>
+    <div class="scroller"><table class="data">
+      <tr><th>Molecule</th><th>Released by</th><th>Effect</th></tr>
+      <tr><td>Hormones</td><td>Endocrine glands, into blood</td><td>Widespread, longer-lasting responses (insulin, adrenaline)</td></tr>
+      <tr><td>Neurotransmitters</td><td>Neurons, into the synaptic cleft</td><td>Rapid, local responses in post-synaptic cells (dopamine, acetylcholine)</td></tr>
+      <tr><td>Cytokines</td><td>Cells, especially immune cells</td><td>Regulate immune activity and inflammation (interferons)</td></tr>
+      <tr><td>Calcium ions</td><td>Intracellular stores</td><td>Second messenger; drives exocytosis and muscle contraction</td></tr>
+    </table></div>
+    <p>Chemically, hormones and neurotransmitters come in several classes: <strong>amines</strong> (adrenaline, thyroxin, melatonin, dopamine, serotonin), <strong>peptides/proteins</strong> (insulin, glucagon, ADH, GnRH, endorphins), <strong>lipids/steroids</strong> (oestradiol, progesterone, testosterone, cortisol), and others including gases (nitric oxide) and amino acids (glutamate). Every ligand must be soluble in the transport medium or carried by a hydrophilic carrier protein.</p>
+
+    <h3>Two routes into a cell (C2.1.6–7)</h3>
+    <div class="scroller"><table class="data">
+      <tr><th></th><th>Hydrophobic / lipophilic ligand</th><th>Hydrophilic / lipophobic ligand</th></tr>
+      <tr><td>Examples</td><td>Steroid hormones: oestradiol, progesterone, testosterone</td><td>Peptide hormones and neurotransmitters: insulin, adrenaline, acetylcholine</td></tr>
+      <tr><td>Crosses the membrane?</td><td>Yes, diffuses straight through</td><td>No</td></tr>
+      <tr><td>Receptor location</td><td>Intracellular — cytoplasm or nucleus</td><td>Transmembrane, in the plasma membrane</td></tr>
+      <tr><td>Mechanism</td><td>Forms a hormone–receptor complex that acts as a transcription factor</td><td>Activates second messengers or phosphorylation cascades inside the cell</td></tr>
+      <tr><td>Response</td><td>Change in gene expression; slower, longer-lasting</td><td>Fast, amplified, often reversible</td></tr>
+    </table></div>
+    <p>Receptor structure follows from this. Intracellular receptors have hydrophilic outer surfaces (they sit in cytoplasm) with non-polar binding sites. Transmembrane receptors have non-polar surfaces facing the lipid bilayer and polar residues facing the extracellular fluid, where the binding site is.</p>
+
+    <h3>Intracellular receptors and steroids (C2.1.12–13)</h3>
+    <ol class="seq">
+      <li>The steroid diffuses across the plasma membrane.</li>
+      <li>It binds an intracellular receptor, forming an activated complex.</li>
+      <li>The complex moves into the nucleus and binds a specific DNA sequence.</li>
+      <li>Acting as a transcription factor, it changes gene expression, and the new proteins produce the cellular response.</li>
+    </ol>
+    <p><strong>Oestradiol</strong> binds receptors in hypothalamus cells and regulates GnRH secretion, which controls FSH and LH release from the pituitary. <strong>Progesterone</strong> binds receptors in endometrial cells and promotes proliferation, thickening the uterine lining.</p>
+
+    <h3>Transmembrane 1: ligand-gated ion channels (C2.1.8)</h3>
+    <ol class="seq">
+      <li>Acetylcholine is released from the neuron into the synaptic cleft.</li>
+      <li>It binds nicotinic receptors on the muscle fibre membrane, opening ligand-gated Na<sup>+</sup> channels.</li>
+      <li>Na<sup>+</sup> flows in and the membrane depolarises.</li>
+      <li>Depolarisation triggers Ca<sup>2+</sup> release from the sarcoplasmic reticulum, causing contraction.</li>
+      <li>Acetylcholine is broken down and recycled, preventing overstimulation.</li>
+    </ol>
+
+    <h3>Transmembrane 2: G-protein coupled receptors (C2.1.9–10)</h3>
+    <p>A GPCR spans the membrane, with an extracellular ligand-binding site and an intracellular region associated with a <strong>G protein</strong> made of α, β and γ subunits. At rest the α subunit holds <strong>GDP</strong>.</p>
+    <ol class="seq">
+      <li>The ligand binds the extracellular site and the receptor changes shape.</li>
+      <li>The receptor catalyses exchange of <strong>GDP for GTP</strong> on the α subunit, which activates the G protein.</li>
+      <li>The α–GTP subunit dissociates from the β–γ dimer.</li>
+      <li>Both parts diffuse laterally through the membrane and regulate effector proteins.</li>
+      <li>GTP is eventually hydrolysed back to GDP, the subunits reassociate, and the signal switches off.</li>
+    </ol>
+    <h4>Adrenaline, worked through</h4>
+    <p>Adrenaline (the ligand) binds a GPCR. The activated G protein activates <strong>adenylate cyclase</strong>, a membrane-bound enzyme, which converts ATP into <strong>cyclic AMP</strong>. cAMP is the second messenger, and because one receptor activates many G proteins and one enzyme makes many cAMP molecules, the signal is amplified enormously. The effects add up to fight-or-flight: pupil dilation, increased ventilation, glycogen breakdown and greater muscle activity.</p>
+    <div class="callout"><span class="ctag">Exam trap</span><p>The α subunit does not detach from the membrane and does not enter the nucleus, and the whole G protein does not float off into the cytoplasm. It dissociates from β–γ and both pieces stay in the membrane.</p></div>
+
+    <h3>Transmembrane 3: receptor tyrosine kinases (C2.1.11)</h3>
+    <p>An RTK is a transmembrane enzyme. When the ligand binds, receptor monomers pair up and the intracellular tails phosphorylate each other: the kinase transfers phosphate groups from <strong>ATP</strong> onto <strong>tyrosine residues</strong>. The phosphorylated tails become docking sites that recruit cytosolic relay proteins, and a cascade follows.</p>
+    <h4>Insulin, worked through</h4>
+    <ol class="seq">
+      <li>Insulin binds the extracellular site of the insulin receptor.</li>
+      <li>The two intracellular tails are phosphorylated on tyrosine residues using phosphate from ATP.</li>
+      <li>Relay proteins dock at the phosphorylated tails and trigger a reaction series.</li>
+      <li>Vesicles containing <strong>GLUT glucose transporters</strong> move to and fuse with the plasma membrane.</li>
+      <li>More transporters in the membrane means faster facilitated diffusion of glucose into the cell, lowering blood glucose.</li>
+    </ol>
+    <div class="callout"><span class="ctag">Exam trap</span><p>Insulin never touches the glucose. It does not open a hole in the bilayer, does not convert glucose to glycogen directly, and the receptor does not transport glucose. It just increases how many transporters are in the membrane.</p></div>
+
+    <h3>What signals actually do to target cells (Target Effects)</h3>
+    <ul>
+      <li>Change gene expression patterns, which can drive differentiation.</li>
+      <li>Regulate enzyme activity, changing rates of metabolic reactions.</li>
+      <li>Change cell shape or size, including muscle contraction.</li>
+      <li>Change rates of cell division or of apoptosis.</li>
+    </ul>
+    <p>Signalling molecules are not converted into ATP or used as an energy source. That is a standard distractor.</p>
+
+    <h3>Master comparison table</h3>
+    <div class="scroller"><table class="data">
+      <tr><th>Ligand</th><th>Class</th><th>Receptor</th><th>Mechanism</th><th>Effect</th></tr>
+      <tr><td>Acetylcholine</td><td>Neurotransmitter</td><td>Ligand-gated ion channel</td><td>Na<sup>+</sup> influx</td><td>Depolarisation, muscle contraction</td></tr>
+      <tr><td>Adrenaline</td><td>Amine hormone</td><td>GPCR</td><td>G protein → adenylate cyclase → cAMP</td><td>Fight or flight</td></tr>
+      <tr><td>Insulin</td><td>Peptide hormone</td><td>Receptor tyrosine kinase</td><td>Tyrosine phosphorylation → relay proteins</td><td>GLUT vesicles fuse, glucose uptake rises</td></tr>
+      <tr><td>Oestradiol</td><td>Steroid hormone</td><td>Intracellular</td><td>Complex acts as transcription factor</td><td>Regulates GnRH secretion</td></tr>
+      <tr><td>Progesterone</td><td>Steroid hormone</td><td>Intracellular</td><td>Complex acts as transcription factor</td><td>Thickens endometrium</td></tr>
+    </table></div>
+
+    <h3>Feedback (C2.1.14)</h3>
+    <p><strong>Negative feedback</strong> reduces the original stimulus and returns the system toward a set point; it is the basis of homeostasis. <strong>Positive feedback</strong> amplifies the stimulus and drives the system further from the starting point, which is useful when you want a process to run to completion, such as childbirth or an action potential.</p>
+    <button class="drill" onclick="drill('signalling')">Drill this topic</button>
+  </article>
+
+  <article class="topic" id="s-viruses">
+    <span class="code">A2.3.1–6</span>
+    <h2>Viruses</h2>
+    <p class="lede">Not alive, extremely good at it anyway.</p>
+
+    <h3>What every virus has (A2.3.1)</h3>
+    <ul>
+      <li>A <strong>capsid</strong>, a protein coat enclosing the particle.</li>
+      <li><strong>Genetic material</strong>, either DNA or RNA, never both.</li>
+      <li>No cytoplasm, and few or no enzymes of its own.</li>
+      <li>A small, fixed size with no capacity for growth, roughly 20–300 nm.</li>
+    </ul>
+    <p>Viruses are <strong>obligate intracellular parasites</strong>: they commandeer host ribosomes, enzymes and ATP to build new virions. Lacking metabolism, growth and independent reproduction is exactly why they are classed as non-living.</p>
+
+    <h3>How viruses differ (A2.3.2)</h3>
+    <ul>
+      <li><strong>Capsid shape:</strong> helical, polyhedral/icosahedral, spherical or complex.</li>
+      <li><strong>Attachment proteins:</strong> distinct glycoproteins that bind complementary host receptors, which determines host range and tissue specificity.</li>
+      <li><strong>Genome:</strong> DNA or RNA, single- or double-stranded, linear or circular.</li>
+      <li><strong>Envelope:</strong> some are wrapped in host-derived lipid membrane, some are naked.</li>
+    </ul>
+    <div class="scroller"><table class="data">
+      <tr><th></th><th>Bacteriophage λ</th><th>Coronavirus</th><th>HIV</th></tr>
+      <tr><td>Host</td><td><em>E. coli</em></td><td>Epithelial cells</td><td>Helper T cells</td></tr>
+      <tr><td>Genome</td><td>Linear double-stranded DNA</td><td>Linear single-stranded RNA</td><td>Linear single-stranded RNA</td></tr>
+      <tr><td>Capsid</td><td>Complex</td><td>Helical</td><td>Icosahedral</td></tr>
+      <tr><td>Envelope</td><td>None</td><td>Enveloped</td><td>Enveloped</td></tr>
+      <tr><td>Cycle</td><td>Lytic and lysogenic</td><td>Lytic</td><td>Lytic and lysogenic</td></tr>
+      <tr><td>Disease</td><td>None in humans</td><td>COVID-19</td><td>AIDS</td></tr>
+    </table></div>
+
+    <h3>Replication cycles (A2.3.3–4)</h3>
+    <h4>Lytic</h4>
+    <ol class="seq">
+      <li><strong>Attachment</strong> to complementary receptor proteins on the host.</li>
+      <li><strong>Entry and replication</strong>: viral genome enters and host machinery makes viral nucleic acid and proteins.</li>
+      <li><strong>Assembly</strong> of component parts into new virions.</li>
+      <li><strong>Release</strong>: enzymes degrade the membrane, the cell lyses and is destroyed, releasing virions.</li>
+    </ol>
+    <h4>Lysogenic</h4>
+    <p>After attachment, an enzyme catalyses <strong>integration</strong> of the viral sequence into the host genome. The cell then divides normally, copying the viral sequence into every daughter cell — this is <strong>latency</strong>, and no virions are made. A stressor triggers <strong>induction</strong>, switching the virus to the lytic cycle and destroying the whole infected cell line.</p>
+    <div class="callout"><span class="ctag">Exam trap</span><p>Lysogeny does not kill the cell at once, and it spreads the viral genome through cell division rather than through virion release. Immediate lysis is the lytic cycle.</p></div>
+
+    <h3>Where viruses came from (A2.3.5)</h3>
+    <ul>
+      <li><strong>Virus-first:</strong> viruses were self-replicating units before cells. Considered unlikely, since viruses need cells to replicate.</li>
+      <li><strong>Escape (progressive):</strong> viruses began as transposable genetic elements inside cells that escaped and became encapsulated.</li>
+      <li><strong>Regressive:</strong> viruses were once cells living symbiotically or parasitically that progressively lost components until only the genome and coat remained.</li>
+    </ul>
+    <p>The universality of the genetic code links viruses to cellular life. The sheer diversity of virus types suggests several separate origins, and the features they all share may be <strong>convergent evolution</strong> under the same selection pressure of obligate parasitism. Origins are hard to settle because viruses are too fragile to fossilise.</p>
+
+    <h3>Rapid evolution (A2.3.6)</h3>
+    <ul>
+      <li><strong>High mutation rates</strong>: RNA and single-stranded DNA are less stable, and viruses lack proofreading enzymes. HIV averages about 0.34 mutations per replication cycle.</li>
+      <li><strong>Short generation times</strong>: an infectious cycle takes roughly 8–72 hours; influenza is under 12.</li>
+      <li><strong>Large populations</strong>: each cycle can release around 10,000 virions, so even rare mutations appear often.</li>
+    </ul>
+    <div class="scroller"><table class="data">
+      <tr><th></th><th>Antigenic drift</th><th>Antigenic shift</th></tr>
+      <tr><td>Cause</td><td>Accumulated point mutations</td><td>Reassortment of gene segments when one cell is infected by two viruses</td></tr>
+      <tr><td>Pace</td><td>Gradual</td><td>Sudden</td></tr>
+      <tr><td>Result</td><td>New seasonal strains</td><td>New subtypes, with pandemic potential</td></tr>
+    </table></div>
+    <p>Consequences for control: vaccines must be reformulated as strains change, infected individuals may be quarantined, vectors can be targeted (chlorination, fumigation), and genetic engineering can produce disease-resistant or sterile vectors.</p>
+    <button class="drill" onclick="drill('viruses')">Drill this topic</button>
+  </article>
+
+  </div><!-- /view-study -->
+
+  <!-- ===================== PRACTICE VIEW ===================== -->
+  <div id="view-practice" class="hide">
+    <div class="pbar">
+      <div class="chips" id="topicChips"></div>
+    </div>
+    <div class="pbar">
+      <button class="pbtn solid" onclick="shuffleDeck()">Shuffle</button>
+      <button class="pbtn" onclick="restart()">Start over</button>
+      <button class="pbtn" onclick="reviewMissed()" id="btnMissed">Review missed</button>
+      <span class="grow"></span>
+      <span id="runStat" style="font-size:14px;color:var(--ink-soft);font-variant-numeric:tabular-nums"></span>
+    </div>
+    <div id="qhost"></div>
+  </div>
+
+  <!-- ===================== EXAM VIEW ===================== -->
+  <div id="view-exam" class="hide">
+    <div id="examIntro" class="result">
+      <h2 style="margin:0 0 8px">Mock test</h2>
+      <p style="font-family:var(--serif);font-size:17px;max-width:62ch;color:var(--ink-soft)">Twenty-five questions pulled at random across all five topics, no feedback until the end. Closest thing here to sitting the real thing.</p>
+      <div class="nav-row">
+        <button class="pbtn solid" onclick="startExam(25)">Start 25 questions</button>
+        <button class="pbtn" onclick="startExam(50)">Long version, 50 questions</button>
+      </div>
+    </div>
+    <div id="examHost" class="hide"></div>
+  </div>
+
+  <footer class="foot">Built from your IB Biology AHL slides on origins of cells, membranes, cell structures, signalling and viruses.</footer>
+  </main>
+</div>
+<script>
+const QBANK = [];
+/* ============ ORIGINS OF CELLS ============ */
+QBANK.push(
+{t:"origins",k:"mcq",q:"Which set of conditions best describes the pre-biotic Earth in which organic compounds are thought to have formed?",
+o:["An oxygen-rich atmosphere, a protective ozone layer and low temperatures","A reducing atmosphere with no free oxygen, high UV radiation, volcanic gases and high temperatures","A nitrogen-only atmosphere with no liquid water and no volcanic activity","An atmosphere identical to today's but with more water vapour"],
+a:1,why:"No free oxygen means no ozone, so UV reached the surface and supplied energy. Volcanism supplied CH4 and CO2, and heat sped reactions up."},
+{t:"origins",k:"mcq",q:"Why would an oxygen-rich early atmosphere have prevented the spontaneous formation of organic molecules?",
+o:["Oxygen would have oxidised organic molecules as fast as they formed","Oxygen would have lowered the temperature below the range needed for reactions","Oxygen would have prevented water from condensing on the surface","Oxygen would have blocked all volcanic gases from entering the atmosphere"],
+a:0,why:"Free oxygen is highly reactive and would have degraded newly formed organics. It also creates ozone, which would have cut off the UV energy source."},
+{t:"origins",k:"mcq",q:"Which sequence correctly orders the proposed steps of abiogenesis?",
+o:["Protocell formation → self-replicating polymers → organic monomers → inorganic molecules","Organic monomers → inorganic molecules → protocells → polymers","Inorganic molecules → organic monomers → self-replicating polymers → protocell formation","Inorganic molecules → protocells → organic monomers → polymers"],
+a:2,why:"Simple organics form first, then polymerise, then some polymers gain self-replication, and finally the replicators get packaged inside membranes."},
+{t:"origins",k:"mcq",q:"Why is the theory of abiogenesis difficult to test experimentally?",
+o:["Organic molecules cannot be synthesised in a laboratory under any conditions","Pre-biotic conditions cannot be replicated exactly and protocells left no fossil record","The genetic code of early cells has been completely lost","Radiometric dating cannot be applied to rocks older than one billion years"],
+a:1,why:"Both problems are evidential. We can only approximate early Earth, and soft protocells did not fossilise, so there is no direct record."},
+{t:"origins",k:"mcq",q:"What did the Miller-Urey experiment actually demonstrate?",
+o:["Living cells can form spontaneously from non-living matter","RNA can replicate itself without enzymes","Organic molecules can form from non-living materials under simulated early-Earth conditions","The first organisms lived near hydrothermal vents"],
+a:2,why:"They recovered amino acids and other organics, not cells and not self-replicating systems. The claim is limited to non-living synthesis of organic compounds."},
+{t:"origins",k:"match",q:"Match each part of the Miller-Urey apparatus with what it represented on early Earth.",
+pool:["Ocean water evaporating","Lightning strikes","Rain and cooling of the atmosphere","The reducing early atmosphere"],
+pairs:[["Boiling flask of water","Ocean water evaporating"],["Electrical discharge","Lightning strikes"],["Condenser","Rain and cooling of the atmosphere"],["Mixture of CH4, NH3 and H2 with no O2","The reducing early atmosphere"]],
+why:"The apparatus is a closed loop modelling evaporation, atmospheric chemistry driven by an energy source, and condensation back into a liquid ocean."},
+{t:"origins",k:"mcq",q:"Fatty acids placed in water spontaneously form micelles. What drives this?",
+o:["Covalent bonds form between the hydrophilic heads","Hydrophobic tails cluster together to avoid contact with the polar solvent","ATP hydrolysis provides energy to arrange the molecules","The tails are attracted to water more strongly than the heads are"],
+a:1,why:"It is entropy-driven exclusion, not bonding between lipids. Non-polar tails are pushed together because water molecules interact better with each other."},
+{t:"origins",k:"mcq",q:"What is the significance of a hydrophobic barrier forming around a group of molecules?",
+o:["It allows the internal chemistry of the compartment to differ from the external environment","It provides a source of energy for chemical reactions","It allows the molecules inside to become inorganic","It prevents any exchange of material with the outside forever"],
+a:0,why:"Compartmentalisation is the point. Once inside and outside can differ, concentrated, controlled chemistry becomes possible."},
+{t:"origins",k:"mcq",q:"Why is RNA, rather than DNA or protein, presumed to be the first genetic material?",
+o:["RNA is more chemically stable than DNA","RNA can both store genetic information and act as a catalyst","RNA is found only in prokaryotes, which evolved first","RNA can be synthesised without any organic precursors"],
+a:1,why:"It sidesteps the chicken-and-egg problem: DNA needs protein enzymes to replicate and protein needs DNA to be encoded, but RNA does both jobs itself."},
+{t:"origins",k:"mcq",q:"Which statement describes the chicken-and-egg problem that the RNA world hypothesis solves?",
+o:["Cells need membranes, but membranes need cells to build them","Proteins need DNA to be synthesised, but DNA needs proteins to be replicated","Water is needed for life, but life is needed to produce water","Ribosomes need mitochondria, but mitochondria need ribosomes"],
+a:1,why:"Neither modern molecule could come first, so a single molecule that does both jobs is the more likely starting point."},
+{t:"origins",k:"multi",q:"Which properties of water were important for the origin and maintenance of the first cells? Select all that apply.",
+o:["Its polarity causes non-polar lipids to form bilayers spontaneously","Its thermal properties help maintain stable internal conditions","It dissolves polar and charged substances so reagents can collide and react","It acts as a reagent in condensation reactions that build polymers","It supplies phosphate groups for ATP synthesis"],
+a:[0,1,2,3],why:"Water is solvent, temperature buffer, structural driver and reagent. Phosphate comes from dissolved inorganic phosphate, not from water."},
+{t:"origins",k:"mcq",q:"Why is water on Earth thought to have an extraplanetary origin?",
+o:["Earth's early high temperature and low gravity meant water vapour could not condense and was lost to space","Earth's crust contains no hydrogen or oxygen","Water can only form in the vacuum of space","Volcanic activity destroys water molecules"],
+a:0,why:"Ice-bearing asteroids delivered water later, once Earth had cooled and gained enough mass to hold onto it."},
+{t:"origins",k:"mcq",q:"A planet orbits a very hot, massive star. Compared with Earth's orbit around the Sun, where would its Goldilocks zone lie?",
+o:["Closer to the star","Further from the star","At exactly the same distance, since the zone depends only on planet size","There would be no Goldilocks zone at all"],
+a:1,why:"Hotter stars radiate more energy, so the band where water stays liquid is pushed outward."},
+{t:"origins",k:"multi",q:"Besides being in the Goldilocks zone, what else must a planet have for liquid surface water? Select all that apply.",
+o:["Sufficient mass to retain an atmosphere","A suitable atmosphere","At least one moon","A magnetic field identical to Earth's"],
+a:[0,1],why:"Without enough gravity and atmospheric pressure, water is lost to space or cannot remain liquid at the surface."},
+{t:"origins",k:"mcq",q:"Which observation is the strongest evidence that all modern cells share a last universal common ancestor?",
+o:["All organisms are multicellular","Almost all organisms use the same genetic code","All cells contain mitochondria","All organisms require oxygen"],
+a:1,why:"The code is arbitrary, so sharing it across all domains points to shared inheritance rather than coincidence. The other three statements are simply false."},
+{t:"origins",k:"multi",q:"Which characteristics are suggested for LUCA by conserved gene sequences? Select all that apply.",
+o:["Anaerobic","Aerobic","Chemoautotrophic","Photosynthetic","Thermophilic","Eukaryotic"],
+a:[0,2,4],why:"Early Earth had no free oxygen, energy came from oxidising inorganic chemicals, and the conserved genes point to heat tolerance. Together they fit a hydrothermal vent environment."},
+{t:"origins",k:"mcq",q:"What is the difference between FUCA and LUCA?",
+o:["They are two names for the same organism","FUCA is the first cellular organism; LUCA is the ancestor from which all present-day life descends","LUCA came first, then FUCA evolved from it","FUCA refers to eukaryotes and LUCA to prokaryotes"],
+a:1,why:"LUCA is not the first cell. Other lineages existed alongside LUCA and went extinct, leaving no descendants today."},
+{t:"origins",k:"mcq",q:"Why is the LUCA genome best described as representing an ancient community rather than one individual cell?",
+o:["Because horizontal gene transfer moved genes between coexisting organisms","Because LUCA reproduced sexually with many partners","Because scientists have sequenced many complete LUCA fossils","Because LUCA was multicellular"],
+a:0,why:"With genes moving laterally between lineages, the reconstructed gene set reflects a pool of organisms rather than a single cell line."},
+{t:"origins",k:"match",q:"Match each dating approach with what it involves.",
+pool:["Chemicals produced by living processes preserved in datable rock strata","Layered sedimentary deposits formed by microbial mats, oldest about 3.45 billion years","Counting sequence differences to estimate time since divergence","Determining the age of a rock stratum from decay of unstable isotopes"],
+pairs:[["Biosignatures","Chemicals produced by living processes preserved in datable rock strata"],["Stromatolites","Layered sedimentary deposits formed by microbial mats, oldest about 3.45 billion years"],["Molecular clock","Counting sequence differences to estimate time since divergence"],["Radiometric dating","Determining the age of a rock stratum from decay of unstable isotopes"]],
+why:"Biochemical evidence dates the rock the life left traces in; phylogenetic comparison dates the branching itself."},
+{t:"origins",k:"mcq",q:"What key assumption does a molecular clock rely on?",
+o:["That mutation rate is roughly constant over time","That all species have the same genome size","That mutations are always beneficial","That no horizontal gene transfer has ever occurred"],
+a:0,why:"If the rate varies, the number of differences no longer translates into elapsed time in a reliable way."},
+{t:"origins",k:"mcq",q:"Which evidence supports LUCA having lived near hydrothermal vents?",
+o:["Stromatolites are only found in deep ocean trenches","Conserved genes indicate a thermophilic chemoautotroph, and fossilised bacteria occur in vent precipitates dated to about 3.7 billion years","All modern bacteria still live near hydrothermal vents","Vent fluids contain free oxygen, which LUCA required"],
+a:1,why:"Genomic inference and physical fossil evidence converge. Minerals precipitating from vent fluid coat and preserve biological structures."},
+{t:"origins",k:"mcq",q:"Why are viruses not considered living organisms?",
+o:["They are too small to be seen with a light microscope","They lack metabolism, cannot replicate independently and cannot grow","They contain no genetic material","They are not made of organic molecules"],
+a:1,why:"Size is irrelevant to the definition. Failing the functions of life is what disqualifies them, and they must use host machinery to reproduce."},
+{t:"origins",k:"multi",q:"Which observations provide evidence for the endosymbiotic origin of mitochondria and chloroplasts? Select all that apply.",
+o:["They contain their own circular, naked DNA","They have 70S ribosomes","They have 80S ribosomes","They are surrounded by a double membrane","They are surrounded by a single membrane","They divide by a fission-like process","They are susceptible to certain antibiotics"],
+a:[0,1,3,5,6],why:"MAD DR: Membranes, Antibiotics, DNA, Division, Ribosomes. All five are bacterial traits retained inside a eukaryotic cell."},
+{t:"origins",k:"mcq",q:"Why does the double membrane of a mitochondrion support endosymbiosis?",
+o:["The inner membrane came from the engulfed bacterium and the outer from the host vesicle","Double membranes are needed for all ATP synthesis","It shows the organelle was formed by the Golgi apparatus","Double membranes only occur in prokaryotes"],
+a:0,why:"Engulfment wraps a host-derived vesicle membrane around the bacterium's own membrane, leaving two layers with different origins."},
+{t:"origins",k:"mcq",q:"Which statement about the origin of eukaryotic cells is correct?",
+o:["A prokaryote engulfed another prokaryote which was not digested and became an organelle","Eukaryotes evolved directly from viruses","Eukaryotes arose when several eukaryotic cells fused","Prokaryotes evolved from eukaryotes by losing organelles"],
+a:0,why:"The engulfed aerobe became the mitochondrion. Membrane in-folding of the host produced the nucleus and endomembrane system."},
+{t:"origins",k:"multi",q:"Which are advantages of multicellularity? Select all that apply.",
+o:["Organisms can exceed the size limits imposed by surface area to volume ratio","Organisms can have longer lifespans because they survive the death of individual cells","Cell differentiation allows specialised cell types and greater complexity","Multicellular organisms are immune to cancer"],
+a:[0,1,2],why:"Cancer is the cost, not a benefit. Uncontrolled division in a single cell is a risk that unicellular organisms do not face in the same way."},
+{t:"origins",k:"mcq",q:"How do cells with identical genomes become different cell types?",
+o:["They lose the genes they do not need during differentiation","Different genes are expressed, switched on or off, often in response to signals","Each cell type receives a different half of the genome at mitosis","Mutations randomly delete unused genes"],
+a:1,why:"Differentiation is regulation, not deletion. The whole genome is retained, which is why cloning from a somatic nucleus is possible."},
+{t:"origins",k:"mcq",q:"What term describes a property of a whole tissue that no individual cell possesses on its own?",
+o:["Differentiation","An emergent property","Homeostasis","Compartmentalisation"],
+a:1,why:"Emergent properties arise from the synergistic interaction of many cells, which is a central argument for the value of multicellularity."},
+{t:"origins",k:"mcq",q:"Which statement about cell theory creates the need for a theory of abiogenesis?",
+o:["The cell is the smallest unit of life","Cells can only arise from pre-existing cells","All living things are composed of cells","Cells contain genetic material"],
+a:1,why:"If cells only come from cells, the very first cell has no source, so a non-cellular origin is required."},
+{t:"origins",k:"mcq",q:"Which correctly orders the major stages from chemistry to complex life?",
+o:["Organic monomers → LUCA → eukaryotes → prokaryotes → multicellularity","Inorganic molecules → organic monomers → protocells → LUCA → prokaryotes → endosymbiosis → eukaryotes → multicellularity","LUCA → protocells → prokaryotes → eukaryotes → endosymbiosis","Protocells → eukaryotes → endosymbiosis → prokaryotes → LUCA"],
+a:1,why:"Endosymbiosis sits between prokaryotes and eukaryotes, and multicellularity is last."}
+);
+/* ============ MEMBRANES ============ */
+QBANK.push(
+{t:"membranes",k:"mcq",q:"Researchers grow two populations of mammalian cells, one at 10 degrees C and one at 37 degrees C. The 10 degrees C cells end up with a higher proportion of unsaturated fatty acids in their membrane phospholipids. Which explanation best accounts for this?",
+o:["Unsaturated fatty acids increase intermolecular forces between phospholipids, stabilising membranes against cold damage","Unsaturated fatty acids allow membranes to maintain appropriate fluidity at lower temperatures by preventing tight phospholipid packing","Unsaturated fatty acids increase the number of phospholipids in the bilayer, strengthening membrane structure","Unsaturated fatty acids raise the melting point of membranes so they remain solid at low temperatures"],
+a:1,why:"Kinks from C=C double bonds stop the tails packing tightly, which keeps the membrane fluid in the cold. Unsaturation lowers melting point, and a solid membrane would be a failure, not a goal."},
+{t:"membranes",k:"mcq",q:"Which describes saturated fatty acid tails in a membrane?",
+o:["Kinked, loosely packed, increasing fluidity","Straight, tightly packed, decreasing fluidity","Straight, loosely packed, increasing fluidity","Kinked, tightly packed, decreasing fluidity"],
+a:1,why:"No double bonds means no kinks, so the tails lie close together and the membrane is more rigid with a higher melting point."},
+{t:"membranes",k:"mcq",q:"Antarctic cod live in permanently icy water. What would you predict about their membrane phospholipids compared with a tropical fish?",
+o:["A higher proportion of unsaturated fatty acids","A higher proportion of saturated fatty acids","No phospholipids at all, only cholesterol","Equal proportions, since membranes do not vary"],
+a:0,why:"Cold-water organisms need more unsaturation to prevent their membranes solidifying. Caribou show the same pattern in cells at their extremities."},
+{t:"membranes",k:"mcq",q:"What is the role of desaturase enzymes in organisms exposed to temperature variation?",
+o:["They remove double bonds to make membranes more rigid in the cold","They introduce double bonds, raising the proportion of unsaturated fatty acids in the bilayer","They break down cholesterol when temperatures rise","They pump ions across the membrane to generate heat"],
+a:1,why:"Adding double bonds is a direct, reversible way to tune fluidity as the environment changes."},
+{t:"membranes",k:"mcq",q:"What is the role of cholesterol as a bidirectional modulator of membrane fluidity?",
+o:["It increases fluidity at both high and low temperatures","It removes phospholipids from the membrane to maintain stability","It decreases fluidity at high temperatures and increases fluidity at low temperatures","It decreases fluidity at both high and low temperatures"],
+a:2,why:"At high temperature it restrains phospholipid movement; at low temperature it wedges between tails and prevents them solidifying. Two opposite effects, one molecule."},
+{t:"membranes",k:"mcq",q:"Why is cholesterol described as a fluidity buffer rather than simply a stiffening agent?",
+o:["Because it keeps membrane fluidity within a workable range across a span of temperatures","Because it makes the membrane completely impermeable","Because it converts saturated tails into unsaturated ones","Because it only functions above 37 degrees C"],
+a:0,why:"A buffer resists change in both directions, which is exactly what the bidirectional description means."},
+{t:"membranes",k:"mcq",q:"Which term describes a phospholipid having both a hydrophilic and a hydrophobic region?",
+o:["Amphipathic","Isotonic","Polar","Hydrolytic"],
+a:0,why:"The polar phosphate head faces water and the non-polar tails face inward, which is why the bilayer assembles spontaneously."},
+{t:"membranes",k:"match",q:"Match each type of membrane transport with the correct example.",
+pool:["Exocytosis","Symport","Pinocytosis","Antiport","Uniport","Phagocytosis"],
+pairs:[["The sodium-calcium exchanger moves Na+ into cells and Ca2+ out","Antiport"],["A phagocytic leukocyte engulfs a pathogen","Phagocytosis"],["In plants, the H+/K+ transporter moves ions into plant roots","Symport"],["Intestinal cells drink fluid containing dissolved nutrients","Pinocytosis"],["The GLUT transporter moves glucose into red blood cells","Uniport"],["Neurons release neurotransmitters via vesicles into the synaptic cleft","Exocytosis"]],
+why:"Count the solutes and check the directions. One solute is uniport, two the same way is symport, two opposite ways is antiport. Solid in is phagocytosis, dissolved in is pinocytosis, anything out by vesicle is exocytosis."},
+{t:"membranes",k:"mcq",q:"What distinguishes phagocytosis from pinocytosis?",
+o:["Phagocytosis takes in solid material, pinocytosis takes in dissolved substances and fluid","Phagocytosis exports material, pinocytosis imports it","Phagocytosis requires no membrane, pinocytosis does","Phagocytosis only occurs in plants"],
+a:0,why:"Both are endocytosis, so material enters without crossing the bilayer. The difference is the physical state of what is taken in."},
+{t:"membranes",k:"mcq",q:"Why can large particles enter a cell by endocytosis when they cannot pass through the bilayer?",
+o:["The particles are broken into monomers before entering","Membrane fluidity lets the bilayer fold around the particle and pinch off a vesicle, so the particle never crosses the bilayer","Membrane proteins temporarily open large pores in the bilayer","The particles dissolve in the hydrophobic core of the membrane"],
+a:1,why:"Endocytosis wraps rather than transports. Fluidity is what allows the membrane to break and reseal."},
+{t:"membranes",k:"mcq",q:"A transport protein moves one solute in one direction only. What is this called?",
+o:["Symport","Antiport","Uniport","Cotransport"],
+a:2,why:"Uni means one. Gated ion channels in neurons are the standard example."},
+{t:"membranes",k:"mcq",q:"Which best describes the sodium-potassium pump?",
+o:["A symporter that moves Na+ and K+ into the cell together","An antiporter that uses ATP hydrolysis to move 3 Na+ out and 2 K+ in","A uniporter that allows Na+ to diffuse down its gradient","A channel that opens in response to acetylcholine"],
+a:1,why:"Opposite directions makes it an antiporter, and because it hydrolyses ATP itself it is direct active transport."},
+{t:"membranes",k:"mcq",q:"In the sodium-potassium pump cycle, what causes the conformational change that expels sodium ions?",
+o:["Binding of potassium ions to the extracellular side","Phosphorylation of the pump by ATP","Release of the phosphate group","Depolarisation of the membrane"],
+a:1,why:"Phosphate transfer changes the shape and releases Na+ outside. Later, phosphate release restores the original shape and brings K+ in."},
+{t:"membranes",k:"mcq",q:"Sodium-dependent glucose cotransport in the small intestine is described as indirect active transport. Why?",
+o:["Because glucose diffuses down its own concentration gradient","Because ATP is hydrolysed by the cotransporter itself","Because the energy comes from an electrochemical gradient rather than from ATP hydrolysis at that protein","Because the transporter only works in the absence of sodium"],
+a:2,why:"ATP built the sodium gradient elsewhere. The cotransporter spends that stored gradient to drag glucose uphill."},
+{t:"membranes",k:"mcq",q:"In sodium-glucose cotransport, which statement about the two solutes is correct?",
+o:["Sodium moves down its gradient and glucose moves against its gradient, in the same direction","Both move down their gradients in opposite directions","Sodium moves against its gradient and glucose moves down its gradient","Both are pumped against their gradients using ATP"],
+a:0,why:"Same direction makes it a symporter, and the favourable Na+ movement pays for the unfavourable glucose movement."},
+{t:"membranes",k:"mcq",q:"What distinguishes a voltage-gated ion channel from a ligand-gated ion channel?",
+o:["Voltage-gated channels open in response to a change in membrane potential; ligand-gated channels open when a signalling molecule binds","Voltage-gated channels move two solutes; ligand-gated channels move one","Voltage-gated channels use ATP; ligand-gated channels do not","Voltage-gated channels are found only in muscle; ligand-gated only in neurons"],
+a:0,why:"The name is the trigger. Potassium channels during repolarisation are voltage-gated; nicotinic acetylcholine receptors are ligand-gated."},
+{t:"membranes",k:"mcq",q:"Which type of cell junction creates an impermeable seal between adjacent cells?",
+o:["Gap junctions","Plasmodesmata","Tight junctions","Anchoring junctions"],
+a:2,why:"Tight junctions block leakage through the space between cells, which is essential in epithelia such as the gut lining."},
+{t:"membranes",k:"match",q:"Match each cell junction with its function.",
+pool:["Impermeable seal preventing leakage between cells","Channels allowing ions and small molecules to pass between animal cells","Hold cells together mechanically within a tissue layer","Cytoplasmic channels through plant cell walls"],
+pairs:[["Tight junction","Impermeable seal preventing leakage between cells"],["Gap junction","Channels allowing ions and small molecules to pass between animal cells"],["Anchoring junction","Hold cells together mechanically within a tissue layer"],["Plasmodesma","Cytoplasmic channels through plant cell walls"]],
+why:"Seal, communicate, anchor. Plasmodesmata are the plant version of gap junctions."},
+{t:"membranes",k:"mcq",q:"Why can loss of cell adhesion contribute to metastasis in malignant cancers?",
+o:["Cancer cells increase tight junction formation, which increases tumour formation","Cancer cells can detach from the tumour and spread to other parts of the body","Cancer cells lose the ability to regulate division","Cancer cells become more specialised"],
+a:1,why:"Loss of division control makes a tumour; loss of adhesion is what lets cells break away and seed secondary tumours."},
+{t:"membranes",k:"mcq",q:"What is the extracellular matrix?",
+o:["The fluid inside a cell","A scaffold of proteins surrounding cells that adhesion molecules can bind to","The double membrane surrounding the nucleus","The space between the two membranes of a mitochondrion"],
+a:1,why:"Cells anchor both to each other and to this scaffold, which is what allows organised tissue to form."},
+{t:"membranes",k:"mcq",q:"Which molecules typically require membrane transport proteins to cross a bilayer?",
+o:["Small non-polar molecules such as oxygen and carbon dioxide","Large or charged particles such as ions and glucose","Steroid hormones","Water vapour"],
+a:1,why:"The hydrophobic core repels charge and blocks large solutes, so they need a protein route."},
+{t:"membranes",k:"mcq",q:"Why are membranes described as selectively permeable rather than simply permeable?",
+o:["Because they allow some substances through freely, others only with assistance, and block others entirely","Because they let everything through at the same rate","Because permeability changes only in dead cells","Because they are permeable only to water"],
+a:0,why:"Selective permeability is what allows a cell to hold an internal composition different from its surroundings."},
+{t:"membranes",k:"mcq",q:"Which process is directly enabled by membrane fluidity?",
+o:["Formation and fusion of vesicles","Covalent bonding between phospholipids","Synthesis of ATP in the cytosol","Replication of DNA"],
+a:0,why:"A rigid membrane could not break and reseal, so endocytosis and exocytosis both depend on fluidity."},
+{t:"membranes",k:"mcq",q:"Gap junctions in cardiac muscle are important because they:",
+o:["Prevent any material moving between cells","Allow ions to pass directly between cells so electrical signals spread quickly","Anchor the heart to the ribcage","Secrete surfactant into the heart chambers"],
+a:1,why:"Direct ionic coupling through intercalated discs is what makes cardiac muscle contract as a coordinated unit."},
+{t:"membranes",k:"mcq",q:"A drug blocks the sodium-potassium pump in an intestinal epithelial cell. What is the most likely effect on glucose absorption by SGLT?",
+o:["It increases, because more sodium is available inside the cell","It decreases, because the sodium gradient that powers cotransport collapses","It is unaffected, because SGLT hydrolyses its own ATP","It reverses, exporting glucose using ATP"],
+a:1,why:"This is the classic reason indirect active transport is still called active. Cut the ATP-built gradient and the cotransporter stops."},
+{t:"membranes",k:"mcq",q:"Neurons contain unusually high numbers of mitochondria. Which membrane process best explains why?",
+o:["Exocytosis of cholesterol","Active transport by the sodium-potassium pump maintaining resting potential","Passive diffusion of oxygen","Formation of tight junctions"],
+a:1,why:"Maintaining an ion gradient across a large surface is continuous ATP expenditure, so the ATP supply has to match."},
+{t:"membranes",k:"mcq",q:"Which statement about the arrangement of a phospholipid bilayer in water is correct?",
+o:["Hydrophobic tails face outward toward the water on both sides","Hydrophilic heads face the aqueous cytosol and interstitial fluid, with tails facing each other inside","Heads and tails alternate randomly through the membrane","The bilayer is held together by covalent bonds between the two layers"],
+a:1,why:"Hydrophobic interactions between the tails hold the two leaflets together, with no covalent bonding needed."},
+{t:"membranes",k:"mcq",q:"Cell adhesion molecules are essential for multicellularity because they:",
+o:["Allow cells to bind to each other and to the extracellular matrix, so tissues can form","Provide the ATP needed for cells to divide","Transport glucose into cells","Prevent all cell signalling between neighbouring cells"],
+a:0,why:"Without stable attachment there is no tissue, only a suspension of independent cells."},
+{t:"membranes",k:"mcq",q:"Which is the best example of antiport?",
+o:["The GLUT transporter moving glucose into a red blood cell","A ligand-gated sodium channel opening in a muscle fibre","The sodium-calcium exchanger moving Na+ in and Ca2+ out","The H+/K+ transporter moving both ions into a root cell"],
+a:2,why:"Two solutes, opposite directions. The last option is symport, and the first two move a single solute."},
+{t:"membranes",k:"mcq",q:"In a cell at 42 degrees C, cholesterol content is increased. What is the expected effect?",
+o:["Increased fluidity and increased permeability","Reduced fluidity, restraining phospholipid movement and limiting permeability","No effect on the membrane at high temperature","The membrane solidifies completely"],
+a:1,why:"At high temperature cholesterol acts as a brake. It only increases fluidity in the cold."}
+);
+/* ============ CELL STRUCTURES ============ */
+QBANK.push(
+{t:"structures",k:"match",q:"Match each description with the correct organelle.",
+pool:["Mitochondria","Lysosome","Nucleus","Golgi apparatus","Vacuole","Ribosome","Chloroplast","Peroxisome"],
+pairs:[["Type of vesicle that stores excess fluid in a cell","Vacuole"],["Were once autonomous, photosynthetic bacteria","Chloroplast"],["Have circular DNA, 70S ribosomes and a matrix","Mitochondria"],["Made of flattened sacs called cisternae","Golgi apparatus"],["Contain flattened discs called thylakoids","Chloroplast"],["Break down waste and debris","Lysosome"],["Consist of a small and a large subunit","Ribosome"],["Surrounded by a double membrane connected with the ER","Nucleus"],["Digest toxic metabolites","Peroxisome"],["Have cristae that contain the electron transport chain","Mitochondria"],["Can be free in the cytosol or attached to rough ER","Ribosome"],["Have pores allowing passage of proteins and nucleic acids","Nucleus"]],
+why:"Watch the pairs that look similar: lysosomes handle waste and debris, peroxisomes handle toxic metabolites, and both are vesicle types along with vacuoles."},
+{t:"structures",k:"mcq",q:"Which best explains the functional significance of the double membrane surrounding the nucleus?",
+o:["It allows selective transport through nuclear pores and lets the envelope break down and reform during cell division","It prevents all proteins from entering the nucleus, protecting DNA from enzymes","It increases ATP production for DNA replication by housing mitochondrial enzymes","It stores ribosomes before they are transported to the cytoplasm"],
+a:0,why:"Pores allow histones and transcription factors in and mRNA out. The envelope also vesiculates in prophase and reassembles at telophase."},
+{t:"structures",k:"mcq",q:"Which molecules pass out of the nucleus through nuclear pores?",
+o:["mRNA and tRNA","Cristae and thylakoids","Cholesterol and phospholipids only","Circular DNA"],
+a:0,why:"RNA must leave for translation in the cytoplasm, while histones and transcription factors move in the other direction."},
+{t:"structures",k:"multi",q:"Which statements correctly compare free and rough ER-bound ribosomes? Select all that apply.",
+o:["Free ribosomes are permanently fixed in place and cannot move","Free ribosomes primarily synthesise proteins that will be secreted","Free ribosomes typically synthesise proteins that function within the cytosol","Bound ribosomes make proteins that may be packaged into vesicles and moved through the endomembrane system","Bound ribosomes are associated with membrane proteins and proteins destined for export","Both types consist of large and small subunits that assemble during translation"],
+a:[2,3,4,5],why:"Free ribosomes are mobile in the cytosol and make cytosolic proteins. Secretion is the job of bound ribosomes."},
+{t:"structures",k:"mcq",q:"Which subunit of a ribosome binds mRNA?",
+o:["The small subunit","The large subunit","Both bind mRNA equally","Neither, mRNA binds the ER membrane directly"],
+a:0,why:"Small binds mRNA, large binds tRNA. Translation begins once the two subunits assemble around the message."},
+{t:"structures",k:"mcq",q:"Which best describes the difference between constitutive and regulated secretion?",
+o:["Regulated secretion releases vesicles continuously, constitutive secretion stores them until signalled","Constitutive secretion releases vesicles continuously without a signal, regulated secretion stores vesicles until a chemical signal triggers release","Constitutive secretion packages proteins into lysosomes, regulated secretion sends proteins to the nucleus","Constitutive secretion requires receptor binding, regulated secretion does not"],
+a:1,why:"Constitutive means constant. Regulated secretion waits for a ligand, which allows a controlled or sustained release."},
+{t:"structures",k:"mcq",q:"Which best describes the role of clathrin in vesicle formation?",
+o:["It functions as a membrane channel allowing ligands to diffuse into vesicles","It forms a lattice-like coat that shapes the membrane into a bud","It permanently integrates into vesicle membranes to stabilise them","It transports vesicles along microtubules from the Golgi to the plasma membrane"],
+a:1,why:"Clathrin is a triskelion coat protein that cages and curves the membrane, then dissociates and is reused."},
+{t:"structures",k:"mcq",q:"Which protein pinches off the clathrin-coated bud to release a vesicle?",
+o:["Kinesin","Dynamin","Adaptor protein","Adenylate cyclase"],
+a:1,why:"Adaptor proteins mark the site, clathrin builds the cage, dynamin severs the neck, then the coat comes off."},
+{t:"structures",k:"mcq",q:"Which motor proteins transport vesicles along the cytoskeleton?",
+o:["Kinesin and dynein","Clathrin and dynamin","Actin and myosin only","Tubulin and collagen"],
+a:0,why:"They walk along microtubules carrying vesicular cargo between compartments."},
+{t:"structures",k:"mcq",q:"Which adaptation of the mitochondrion most directly increases the surface area available for the electron transport chain?",
+o:["The matrix","Cristae","The intermembrane space","The outer membrane"],
+a:1,why:"Cristae are folds of the inner membrane, and the inner membrane is where the ETC and ATP synthase sit."},
+{t:"structures",k:"mcq",q:"Why is the small volume of the mitochondrial intermembrane space an advantage?",
+o:["It allows protons to accumulate quickly, creating a steep gradient","It stores pyruvate before it enters the matrix","It houses the Krebs cycle enzymes","It prevents oxygen from entering the mitochondrion"],
+a:0,why:"A smaller compartment reaches a high proton concentration faster, driving chemiosmosis harder."},
+{t:"structures",k:"match",q:"Match each mitochondrial structure with its function.",
+pool:["Krebs cycle enzymes at a suitable pH","Electron transport chain and ATP synthase","Protons accumulate rapidly here","Transport proteins shuttle pyruvate in","Folds that increase surface area"],
+pairs:[["Matrix","Krebs cycle enzymes at a suitable pH"],["Inner membrane","Electron transport chain and ATP synthase"],["Intermembrane space","Protons accumulate rapidly here"],["Outer membrane","Transport proteins shuttle pyruvate in"],["Cristae","Folds that increase surface area"]],
+why:"Fluid compartments hold enzyme sets; membranes hold the ETC and transporters."},
+{t:"structures",k:"match",q:"Match each chloroplast structure with its function.",
+pool:["Calvin cycle enzymes at a suitable pH","Electron transport chain and ATP synthase for photophosphorylation","Stacks of thylakoids that increase surface area","Connect and separate thylakoid stacks","Evidence of an independent, endosymbiotic origin"],
+pairs:[["Stroma","Calvin cycle enzymes at a suitable pH"],["Thylakoid","Electron transport chain and ATP synthase for photophosphorylation"],["Granum","Stacks of thylakoids that increase surface area"],["Lamella","Connect and separate thylakoid stacks"],["Double membrane","Evidence of an independent, endosymbiotic origin"]],
+why:"The stroma is the chloroplast's version of the matrix, and thylakoid membranes are its version of cristae."},
+{t:"structures",k:"mcq",q:"Which pair of features is shared by mitochondria and chloroplasts?",
+o:["A single membrane and 80S ribosomes","A double membrane and circular DNA","Cristae and thylakoids","Nuclear pores and cisternae"],
+a:1,why:"Both are endosymbiotic in origin, so both kept a double membrane, circular DNA and 70S ribosomes."},
+{t:"structures",k:"mcq",q:"Where does material arriving at the Golgi apparatus come from, and which face receives it?",
+o:["From the ER, at the cis face","From the plasma membrane, at the trans face","From the nucleus, through nuclear pores","From lysosomes, at the cis face"],
+a:0,why:"Cis faces the ER and trans faces the plasma membrane, so material moves cis to trans as it is modified."},
+{t:"structures",k:"mcq",q:"Which is not a function of the Golgi apparatus?",
+o:["Sorting and modifying proteins","Exporting material in vesicles","Synthesising ATP by aerobic respiration","Processing glycoproteins and glycolipids"],
+a:2,why:"ATP synthesis belongs to the mitochondrion. The Golgi is the sorting, modifying and dispatch centre."},
+{t:"structures",k:"mcq",q:"Which best explains why cells specialised for exchange are often flat with surface projections such as microvilli?",
+o:["Flattened cells and microvilli increase ATP production for active transport","Flattened cells prevent diffusion while microvilli store nutrients","Flattening decreases diffusion distance and projections increase surface area, improving rate of exchange","Flattening increases permeability while microvilli increase cell volume"],
+a:2,why:"Two separate advantages: shorter path and more area. Both raise the rate of exchange predicted by Fick's principle."},
+{t:"structures",k:"mcq",q:"Why does an increase in cell size make exchange more difficult?",
+o:["Volume increases faster than surface area, so the ratio of exchange surface to demand falls","Surface area increases faster than volume","Larger cells have thicker membranes","Larger cells cannot make transport proteins"],
+a:0,why:"This is also why multicellularity gets around the size limit that constrains a single cell."},
+{t:"structures",k:"mcq",q:"Which statement best describes the functional difference between Type I and Type II pneumocytes?",
+o:["Type I are immune cells that remove pathogens, Type II transport oxygen into capillaries","Type I form the thin gas exchange surface, Type II secrete surfactant","Type I produce surfactant, Type II form the thin gas exchange barrier","Type I store oxygen, Type II regulate blood pH"],
+a:1,why:"Type I are squamous and extremely thin, so the diffusion path is short. Type II are cuboidal and secrete surfactant to lower surface tension."},
+{t:"structures",k:"mcq",q:"What does surfactant do in the alveoli?",
+o:["Reduces surface tension so alveoli do not collapse","Increases the thickness of the gas exchange surface","Binds oxygen and carries it into the blood","Digests inhaled bacteria"],
+a:0,why:"Without it the water lining the alveolus would pull the walls together, especially on exhalation."},
+{t:"structures",k:"match",q:"Match each specialised cell with the adaptation that supports its function.",
+pool:["Numerous lysosomes to digest engulfed pathogens","High number of mitochondria to support active transport maintaining membrane potential","Many secretory vesicles and a highly developed endomembrane system","Multinucleated fused fibres containing myofibrils","Branched cells connected by gap junctions in intercalated discs","Small streamlined cell with flagellum and acrosome","Large cell with many organelles and cortical granules","Increased surface area and cell junctions for exchange and barrier function"],
+pairs:[["Phagocytic leukocyte","Numerous lysosomes to digest engulfed pathogens"],["Neuron","High number of mitochondria to support active transport maintaining membrane potential"],["Endocrine cell","Many secretory vesicles and a highly developed endomembrane system"],["Skeletal muscle cell","Multinucleated fused fibres containing myofibrils"],["Cardiac muscle cell","Branched cells connected by gap junctions in intercalated discs"],["Sperm cell","Small streamlined cell with flagellum and acrosome"],["Egg (ovum)","Large cell with many organelles and cortical granules"],["Epithelial barrier cell","Increased surface area and cell junctions for exchange and barrier function"]],
+why:"Skeletal muscle fuses into multinucleated fibres, cardiac muscle does not fuse and stays single-nucleated but branches and couples through gap junctions."},
+{t:"structures",k:"mcq",q:"Why are skeletal muscle fibres multinucleated?",
+o:["Their nuclei divide repeatedly without cytokinesis by accident","Individual cells fuse into long linear fibres, which maximises contraction power","Each myofibril contains its own nucleus","They absorb nuclei from neighbouring cells during contraction"],
+a:1,why:"Fusion produces one long fibre pulling in a single direction. Cardiac muscle takes the opposite approach and stays as separate branched cells."},
+{t:"structures",k:"mcq",q:"What is the function of cortical granules in an egg cell?",
+o:["Provide energy for the flagellum","Prevent polyspermy after fertilisation","Digest the acrosome","Store carbon dioxide"],
+a:1,why:"They release contents that block additional sperm from entering, which would otherwise produce an unviable zygote."},
+{t:"structures",k:"mcq",q:"Which adaptation of the sperm cell is directly related to penetrating the egg?",
+o:["The flagellum","The acrosome","Its small size","Its lack of mitochondria"],
+a:1,why:"The acrosome cap carries enzymes for penetration; the flagellum handles motility, and small size reduces resistance to movement."},
+{t:"structures",k:"mcq",q:"A cell is found to contain an unusually large number of lysosomes. Which function is it most likely specialised for?",
+o:["Hormone secretion","Digestion of engulfed pathogens","Gas exchange","Maintaining resting potential"],
+a:1,why:"Lysosomal enzymes break down the contents of phagosomes, so phagocytes carry a lot of them."},
+{t:"structures",k:"mcq",q:"Why do membrane-bound organelles allow more efficient cell function?",
+o:["They let each compartment maintain its own enzymes, pH and concentrations, so incompatible reactions can occur at once","They prevent all molecules from moving between compartments","They remove the need for the cell to have a plasma membrane","They allow the cell to survive without a nucleus"],
+a:0,why:"Compartmentalisation means each process can run at its own optimum without interfering with the rest of the cell."},
+{t:"structures",k:"mcq",q:"Which structures are found in all cells, prokaryotic and eukaryotic?",
+o:["Nucleus, mitochondria, cytoskeleton, Golgi","Cell membrane, cytosol, genetic material, ribosomes","Chloroplast, vacuole, lysosome, ER","Cell wall, flagellum, nucleus, cristae"],
+a:1,why:"These four are the shared minimum. Anything membrane-bound beyond that is a eukaryotic addition."},
+{t:"structures",k:"mcq",q:"A cell secretes large quantities of protein hormone. Which combination of organelles would you expect to be most developed?",
+o:["Rough ER, Golgi apparatus and secretory vesicles","Chloroplasts and vacuoles","Lysosomes and peroxisomes only","Nuclear pores and cristae only"],
+a:0,why:"That is the export pathway: bound ribosomes on rough ER make it, the Golgi modifies and packages it, and vesicles carry it out."},
+{t:"structures",k:"mcq",q:"Red blood cells are biconcave. What is the main advantage of this shape?",
+o:["It increases surface area to volume ratio and shortens diffusion distance for gases","It allows the cell to store more DNA","It makes the cell resistant to lysosomal digestion","It increases the number of mitochondria that fit inside"],
+a:0,why:"Same principle as squamous cells and microvilli: shape solving an exchange problem."},
+{t:"structures",k:"mcq",q:"Which vesicle type is responsible for the digestion of toxic metabolites?",
+o:["Lysosome","Peroxisome","Vacuole","Secretory vesicle"],
+a:1,why:"Peroxisomes handle toxic metabolites; lysosomes handle waste and debris. The distinction shows up often in matching questions."}
+);
+/* ============ SIGNALLING ============ */
+QBANK.push(
+{t:"signalling",k:"mcq",q:"The signal molecule that starts communication between cells is called a:",
+o:["receptor","ligand","response","channel"],
+a:1,why:"The ligand is released by the signalling cell and binds a receptor with a complementary binding site on or in the target cell."},
+{t:"signalling",k:"mcq",q:"What happens to a receptor protein when its ligand binds?",
+o:["It is broken down into amino acids","It undergoes a conformational change that triggers a cellular response","It is exported from the cell by exocytosis","It converts the ligand into ATP"],
+a:1,why:"Reception is a shape change, and that change is what starts transduction."},
+{t:"signalling",k:"match",q:"Match each signalling term with its correct definition.",
+pool:["Cytokines","Paracrine signalling","Autocrine signalling","Hormones","Calcium ions","Quorum sensing","Endocrine signalling","Neurotransmitters"],
+pairs:[["A cell releases signals that bind to receptors on itself","Autocrine signalling"],["Chemical messengers released by neurons to transmit signals across synapses","Neurotransmitters"],["Long-distance signalling using chemicals transported through the bloodstream","Endocrine signalling"],["Local cell signalling where molecules affect nearby cells","Paracrine signalling"],["Chemical messengers released by endocrine glands that travel through blood to target cells","Hormones"],["Cell-to-cell communication in bacteria based on population density","Quorum sensing"],["Intracellular signalling molecules involved in muscle contraction and enzyme activity","Calcium ions"],["Small proteins released especially by immune cells that regulate immune responses and inflammation","Cytokines"]],
+why:"Separate the range of signalling (autocrine, paracrine, endocrine) from the molecule categories (hormones, neurotransmitters, cytokines, calcium ions)."},
+{t:"signalling",k:"mcq",q:"An activated helper T cell releases a cytokine that binds receptors on itself, driving its own proliferation. What type of signalling is this?",
+o:["Autocrine","Paracrine","Endocrine","Quorum sensing"],
+a:0,why:"Auto means self. The releasing cell is also the target cell."},
+{t:"signalling",k:"mcq",q:"A neuron releases a neurotransmitter that acts on the cell immediately across the synapse. This is an example of:",
+o:["Endocrine signalling","Paracrine signalling","Autocrine signalling","Quorum sensing"],
+a:1,why:"Paracrine signalling acts locally on nearby cells, in contrast to hormones travelling in the blood."},
+{t:"signalling",k:"mcq",q:"How does quorum sensing allow a bacterial population to act in a coordinated way?",
+o:["Each bacterium releases an autoinducer, and once concentration passes a threshold the whole population changes activity together","Bacteria physically fuse when the population is dense enough","Bacteria exchange plasmids that force a response in each cell","A single bacterium signals directly to every other cell by contact"],
+a:0,why:"The ligand concentration reports population density, so the threshold acts as a headcount."},
+{t:"signalling",k:"mcq",q:"Why is the relationship between Vibrio fischeri and the bobtail squid described as mutualistic?",
+o:["The bacteria get organic nutrients and the squid gets camouflage by counterillumination","The squid digests the bacteria for energy","The bacteria infect the squid and cause disease","Only the bacteria benefit"],
+a:0,why:"Light from the underside matches downwelling light and erases the squid's silhouette from below."},
+{t:"signalling",k:"match",q:"Match each signalling chemical with an example.",
+pool:["Insulin and adrenaline","Dopamine and acetylcholine","Interferons","Second messenger released from the sarcoplasmic reticulum"],
+pairs:[["Hormones","Insulin and adrenaline"],["Neurotransmitters","Dopamine and acetylcholine"],["Cytokines","Interferons"],["Calcium ions","Second messenger released from the sarcoplasmic reticulum"]],
+why:"Hormones travel in blood for widespread lasting effects, neurotransmitters act fast and locally, cytokines regulate immunity, calcium works inside the cell."},
+{t:"signalling",k:"multi",q:"Which of the following are steroid (lipid class) hormones? Select all that apply.",
+o:["Oestradiol","Progesterone","Testosterone","Insulin","Adrenaline","Cortisol"],
+a:[0,1,2,5],why:"Insulin is a peptide and adrenaline is an amine, so both are hydrophilic and use surface receptors."},
+{t:"signalling",k:"mcq",q:"Which statement correctly compares how hydrophobic and hydrophilic ligands initiate signal transduction?",
+o:["Hydrophobic ligands bind intracellular receptors after crossing the membrane, while hydrophilic ligands bind transmembrane receptors and often activate second-messenger pathways","Hydrophobic ligands bind transmembrane receptors, while hydrophilic ligands cross the membrane and bind intracellular receptors","Both must cross the plasma membrane before binding receptors","Both bind only to intracellular receptors"],
+a:0,why:"Solubility decides the route. Lipid-soluble signals pass through the bilayer; water-soluble ones cannot and must be relayed."},
+{t:"signalling",k:"mcq",q:"Which describes the structure of a transmembrane receptor?",
+o:["Non-polar surfaces facing the lipid bilayer, with polar amino acids exposed to external fluid forming the binding site","Entirely non-polar so it can dissolve in the cytosol","Entirely polar so it can span the hydrophobic core","Made of phospholipids rather than protein"],
+a:0,why:"Receptors are proteins whose surface chemistry matches their surroundings, non-polar in the membrane and polar in aqueous fluid."},
+{t:"signalling",k:"mcq",q:"An intracellular receptor has hydrophilic outer surfaces and a non-polar binding site. Why?",
+o:["Because it sits in aqueous cytoplasm but binds a lipophilic ligand","Because it must be transported across the membrane","Because it converts hydrophobic ligands into hydrophilic ones","Because it is embedded in the bilayer"],
+a:0,why:"The outside faces water and the pocket has to accommodate a steroid, so the two regions have opposite chemistry."},
+{t:"signalling",k:"mcq",q:"Which best compares how steroid and peptide hormones produce cellular responses?",
+o:["Steroids such as testosterone diffuse through the membrane and bind intracellular receptors to regulate gene expression, while peptides such as insulin bind membrane receptors and activate intracellular cascades","Both diffuse through the membrane and bind intracellular receptors","Steroids bind membrane receptors while peptides diffuse through and regulate transcription","Both bind membrane receptors and act directly as transcription factors"],
+a:0,why:"Steroid responses are slower and involve transcription; peptide responses are faster and involve amplification through relays."},
+{t:"signalling",k:"mcq",q:"After a steroid hormone binds its intracellular receptor, what does the resulting complex do?",
+o:["Moves to the nucleus, binds DNA and acts as a transcription factor","Opens ion channels in the plasma membrane","Converts ATP into cyclic AMP","Phosphorylates tyrosine residues on the receptor"],
+a:0,why:"That is why steroid responses take longer and last longer: the response requires transcription and translation of new proteins."},
+{t:"signalling",k:"mcq",q:"Oestradiol binds receptors in cells of the hypothalamus. What does it regulate there?",
+o:["Secretion of GnRH, which controls FSH and LH release from the pituitary","Thickening of the endometrium","Release of insulin from the pancreas","Breakdown of acetylcholine in the synapse"],
+a:0,why:"Progesterone is the one that acts on endometrial cells to promote proliferation."},
+{t:"signalling",k:"mcq",q:"Progesterone binds receptors within endometrial cells. What is the effect?",
+o:["Promotes cell proliferation, thickening the uterine lining","Triggers ovulation directly","Depolarises the uterine membrane","Prevents transcription in all uterine cells"],
+a:0,why:"It prepares the endometrium to support implantation."},
+{t:"signalling",k:"mcq",q:"Which sequence correctly shows how acetylcholine leads to muscle contraction?",
+o:["Acetylcholine release → receptor binding → Na+ entry and depolarisation → Ca2+ release from sarcoplasmic reticulum → acetylcholine breakdown","Receptor binding → acetylcholine release → Ca2+ release → Na+ entry → acetylcholine breakdown","Acetylcholine release → Ca2+ release → receptor binding → Na+ entry → acetylcholine breakdown","Na+ entry → acetylcholine release → receptor binding → acetylcholine breakdown → Ca2+ release"],
+a:0,why:"Release, bind, depolarise, release calcium, then break the ligand down so the muscle is not overstimulated."},
+{t:"signalling",k:"mcq",q:"Why must acetylcholine be broken down after it acts at the neuromuscular junction?",
+o:["To prevent continuous stimulation of the muscle fibre","To provide ATP for contraction","To open voltage-gated calcium channels","To allow the receptor to enter the nucleus"],
+a:0,why:"Signals need an off switch. Without breakdown the channels keep opening and the muscle cannot relax."},
+{t:"signalling",k:"mcq",q:"Which type of receptor does acetylcholine bind at the neuromuscular junction?",
+o:["An intracellular receptor","A ligand-gated ion channel","A receptor tyrosine kinase","A G-protein coupled receptor only"],
+a:1,why:"The nicotinic acetylcholine receptor is the ligand-gated sodium channel, so ion movement is the immediate response."},
+{t:"signalling",k:"mcq",q:"Which best explains the molecular change in a G protein after a GPCR binds its ligand?",
+o:["The receptor catalyses exchange of GDP for GTP on the alpha subunit, activating the G protein","The receptor hydrolyses GTP to GDP on the beta subunit","The G protein releases both GDP and GTP, allowing ATP to bind","The receptor transfers a phosphate directly to the ligand"],
+a:0,why:"GDP out, GTP in, on the alpha subunit. Hydrolysis back to GDP is the off switch, not the on switch."},
+{t:"signalling",k:"mcq",q:"What is the functional consequence of GTP binding to the alpha subunit of a G protein?",
+o:["The alpha subunit stays bound to the receptor to stabilise ligand binding","The whole G protein leaves the membrane and diffuses through the cytoplasm","The alpha subunit dissociates from the beta-gamma complex and both parts regulate downstream effector proteins","The alpha subunit enters the nucleus and activates transcription"],
+a:2,why:"Both parts stay in the membrane and diffuse laterally. Neither goes to the nucleus or floats off into the cytosol."},
+{t:"signalling",k:"mcq",q:"Adrenaline acts on a target cell through a GPCR. Which correctly identifies the ligand and the mechanism?",
+o:["The G protein is the ligand; it binds adrenaline and uses GTP hydrolysis to make second messengers","Adrenaline is the ligand; it binds the GPCR and promotes exchange of GDP for GTP on the G protein, starting an intracellular cascade","GTP is the ligand; it binds the GPCR and lets adrenaline activate intracellular receptors","The GPCR is the ligand; it binds adrenaline and transports it across the membrane"],
+a:1,why:"The ligand is always the arriving messenger. Receptors, G proteins and nucleotides are machinery, not signals."},
+{t:"signalling",k:"mcq",q:"In the adrenaline pathway, what does the activated G protein do next?",
+o:["Activates adenylate cyclase, which converts ATP into cyclic AMP","Phosphorylates tyrosine residues on the receptor","Binds DNA in the nucleus","Opens a ligand-gated sodium channel"],
+a:0,why:"cAMP is the second messenger that carries the signal onward and produces the fight-or-flight effects."},
+{t:"signalling",k:"mcq",q:"What is a second messenger?",
+o:["A small intracellular molecule such as cAMP or Ca2+ that relays and amplifies a signal inside the cell","A second ligand released by the signalling cell","A backup receptor used if the first fails","A protein that carries hormones through the blood"],
+a:0,why:"Amplification is the key idea: one bound receptor can generate very large numbers of second messenger molecules."},
+{t:"signalling",k:"mcq",q:"Why does a GPCR pathway produce a much larger response than the number of ligand molecules would suggest?",
+o:["Because each ligand molecule binds thousands of receptors at once","Because one receptor activates many G proteins and one enzyme produces many second messenger molecules, amplifying at each step","Because ligands are converted into ATP","Because second messengers reproduce themselves"],
+a:1,why:"Cascades multiply at every stage, which is why hormone concentrations in blood can be tiny yet effective."},
+{t:"signalling",k:"multi",q:"Which are effects of adrenaline binding its receptors as part of the fight-or-flight response? Select all that apply.",
+o:["Pupil dilation","Increased ventilation","Increased muscle activity","Thickening of the endometrium"],
+a:[0,1,2],why:"Endometrial thickening is progesterone. Adrenaline prepares the body for vigorous activity."},
+{t:"signalling",k:"mcq",q:"Which best describes how receptor tyrosine kinases initiate intracellular signalling after ligand binding?",
+o:["They hydrolyse membrane phospholipids to generate signalling molecules","They act as enzymes that transfer phosphate groups from ATP to tyrosine residues","They convert bound ligands directly into second messengers","They transport the ligand through the membrane into the cytoplasm"],
+a:1,why:"RTKs are transmembrane enzymes. Phosphorylated tyrosines become docking sites for relay proteins."},
+{t:"signalling",k:"mcq",q:"What is the role of ATP in receptor tyrosine kinase signalling?",
+o:["It provides energy to move the receptor into the nucleus","It is converted into second messengers that bind the receptor","It provides the phosphate groups transferred to tyrosine residues","It binds glucose transporters and opens them"],
+a:2,why:"Kinases phosphorylate, and ATP is the phosphate donor. Compare with GPCRs, where ATP becomes cAMP instead."},
+{t:"signalling",k:"mcq",q:"Which best explains how activation of the insulin receptor increases glucose uptake?",
+o:["Phosphorylation of intracellular receptor tails recruits relay proteins that stimulate movement of glucose-transporter vesicles to the plasma membrane","Insulin binding converts incoming glucose into glycogen directly","Insulin binding opens channels that let glucose diffuse through the phospholipid bilayer","The insulin receptor transports glucose across the membrane itself"],
+a:0,why:"More transporters in the membrane means faster facilitated diffusion. Insulin itself never contacts the glucose."},
+{t:"signalling",k:"mcq",q:"A mutation prevents the intracellular tails of the insulin receptor from being phosphorylated. What is the most likely consequence?",
+o:["Relay proteins cannot be recruited, so GLUT vesicles are not moved to the membrane and glucose uptake falls","Insulin can no longer enter the bloodstream","Glucose is converted into ATP more rapidly","The receptor moves into the nucleus and activates transcription"],
+a:0,why:"Phosphorylated tyrosines are the docking sites. Without them the cascade never starts."},
+{t:"signalling",k:"mcq",q:"Which is NOT a typical effect of signalling molecules on target cells?",
+o:["Modifying enzyme activity that regulates metabolic reaction rates","Changing cell structure, such as altering cell shape or triggering contraction","Converting signalling molecules directly into ATP for energy","Altering patterns of gene expression that influence differentiation"],
+a:2,why:"Signals carry information, not energy. They are not used as a fuel source."},
+{t:"signalling",k:"multi",q:"Which are recognised cellular responses to signalling molecules? Select all that apply.",
+o:["Changes in gene expression leading to differentiation","Regulation of enzyme activity","Changes in cell shape or size, such as muscle contraction","Changes in rates of cell division or apoptosis"],
+a:[0,1,2,3],why:"All four appear on the target effects list: gene expression, enzyme regulation, morphology, and proliferation or death."},
+{t:"signalling",k:"match",q:"Match each ligand with its receptor type.",
+pool:["Ligand-gated ion channel","G-protein coupled receptor","Receptor tyrosine kinase","Intracellular receptor"],
+pairs:[["Acetylcholine","Ligand-gated ion channel"],["Adrenaline","G-protein coupled receptor"],["Insulin","Receptor tyrosine kinase"],["Oestradiol","Intracellular receptor"]],
+why:"This table is worth memorising outright, since most signalling questions are a variation on one of these four rows."},
+{t:"signalling",k:"match",q:"Match each ligand with the immediate cellular effect it produces.",
+pool:["Depolarisation of the membrane through Na+ influx","Production of cAMP as a second messenger for fight or flight","Movement of vesicles carrying glucose transporters to the membrane","Change in gene expression that thickens the endometrium"],
+pairs:[["Acetylcholine","Depolarisation of the membrane through Na+ influx"],["Adrenaline","Production of cAMP as a second messenger for fight or flight"],["Insulin","Movement of vesicles carrying glucose transporters to the membrane"],["Progesterone","Change in gene expression that thickens the endometrium"]],
+why:"Match mechanism to outcome: channels change membrane potential, GPCRs make second messengers, RTKs recruit relays, steroids change transcription."},
+{t:"signalling",k:"mcq",q:"Which describes negative feedback in a signalling pathway?",
+o:["The response reduces the original stimulus, returning the system toward a set point","The response amplifies the original stimulus","The response has no effect on the stimulus","The stimulus is destroyed by the receptor"],
+a:0,why:"Negative feedback underlies homeostasis; positive feedback drives a process to completion, as in childbirth."},
+{t:"signalling",k:"mcq",q:"Which situation is an example of positive feedback?",
+o:["Insulin release lowering blood glucose, which reduces further insulin release","A stimulus producing a response that increases the stimulus further","Thermoregulation returning body temperature to 37 degrees C","Breakdown of acetylcholine ending muscle stimulation"],
+a:1,why:"Positive feedback pushes further from the starting point, which is useful when a process needs to run to completion."},
+{t:"signalling",k:"mcq",q:"Why must all ligands be soluble in their transport medium, or bound to a hydrophilic carrier protein?",
+o:["So they can be carried in the aqueous blood or extracellular fluid to reach target cells","So they can be converted into ATP","So they can cross the nuclear envelope","So they can be digested by lysosomes"],
+a:0,why:"Steroids are lipid-soluble and poorly soluble in plasma, so they travel bound to carrier proteins."},
+{t:"signalling",k:"mcq",q:"A cell lacks receptors for a hormone circulating in the blood. What happens?",
+o:["The hormone diffuses in and acts anyway","The cell does not respond, because reception requires a complementary receptor","The hormone is converted into a different hormone by that cell","The cell dies immediately"],
+a:1,why:"Specificity comes from receptors, which is why one hormone in general circulation only affects particular target cells."},
+{t:"signalling",k:"mcq",q:"Place the stages of cell signalling in the correct order.",
+o:["Transduction → reception → signal → response","Signal → reception → transduction → response","Reception → response → transduction → signal","Response → signal → transduction → reception"],
+a:1,why:"A ligand is released, a receptor receives it, the message is converted and relayed, and the cell responds."},
+{t:"signalling",k:"mcq",q:"Nitric oxide is listed as a neurotransmitter. What is unusual about it compared with dopamine or acetylcholine?",
+o:["It is a gas rather than an amine or peptide","It has no effect on target cells","It is stored permanently in vesicles","It cannot bind any receptor"],
+a:0,why:"The chemical diversity of signalling molecules includes gases and amino acids such as glutamate alongside amines and peptides."}
+);
+/* ============ VIRUSES ============ */
+QBANK.push(
+{t:"viruses",k:"multi",q:"Which structural features are common to all viruses? Select all that apply.",
+o:["A protein capsid","Genetic material, either DNA or RNA","A lipid envelope","Cytoplasm and many enzymes","A small, fixed size with no capacity for growth"],
+a:[0,1,4],why:"Envelopes are variable, and viruses have no cytoplasm and few or no enzymes. Capsid, nucleic acid and fixed small size are universal."},
+{t:"viruses",k:"mcq",q:"What does it mean that viruses are obligate intracellular parasites?",
+o:["They can reproduce outside cells but prefer to be inside","They must enter a host cell and use its machinery and energy to replicate","They live inside cells but do not harm them","They parasitise only prokaryotes"],
+a:1,why:"They have no ribosomes or metabolism of their own, so they borrow the host's, which is central to why they are non-living."},
+{t:"viruses",k:"multi",q:"On which features do viruses differ from one another? Select all that apply.",
+o:["Capsid shape","Presence or absence of a lipid envelope","Type of genetic material and whether it is single- or double-stranded","Attachment proteins","Whether they contain both DNA and RNA"],
+a:[0,1,2,3],why:"No virus carries both DNA and RNA as its genome. Everything else on the list varies widely."},
+{t:"viruses",k:"mcq",q:"Why can a particular virus only infect certain cell types?",
+o:["Its attachment proteins are complementary only to specific host receptor proteins","It can only survive at the temperature of certain organs","Its capsid dissolves in most cell types","Its genome is too small to enter most cells"],
+a:0,why:"Specificity of binding determines host range. HIV infects helper T cells for exactly this reason."},
+{t:"viruses",k:"match",q:"Match each virus with its characteristics.",
+pool:["Double-stranded DNA, complex capsid, non-enveloped, infects E. coli","Single-stranded RNA, helical capsid, enveloped, causes COVID-19","Single-stranded RNA, icosahedral capsid, enveloped, infects helper T cells"],
+pairs:[["Bacteriophage lambda","Double-stranded DNA, complex capsid, non-enveloped, infects E. coli"],["Coronavirus","Single-stranded RNA, helical capsid, enveloped, causes COVID-19"],["HIV","Single-stranded RNA, icosahedral capsid, enveloped, infects helper T cells"]],
+why:"The phage is the odd one out with double-stranded DNA and no envelope. Both RNA viruses are enveloped."},
+{t:"viruses",k:"mcq",q:"Which correctly orders the basic steps of viral replication?",
+o:["Assembly → attachment → release → replication","Attachment → entry of genetic material → synthesis of viral components → assembly → release","Release → attachment → assembly → replication","Attachment → assembly → replication → release"],
+a:1,why:"Bind, insert, build, assemble, leave. Every cycle follows this pattern regardless of virus type."},
+{t:"viruses",k:"mcq",q:"What happens to the host cell at the end of the lytic cycle?",
+o:["It survives and continues dividing with viral DNA inside","Enzymes degrade the membrane, the cell lyses and is destroyed as virions are released","It becomes a permanent virus factory without ever bursting","It fuses with a neighbouring cell"],
+a:1,why:"Lysis destroys the cell, which is a direct cause of tissue damage and disease symptoms."},
+{t:"viruses",k:"mcq",q:"What distinguishes the lysogenic cycle from the lytic cycle?",
+o:["Viral genetic material is integrated into the host genome and copied as the cell divides, with lysis delayed until induction","Virions are released immediately by bursting the cell","No viral genetic material enters the host","It occurs only in eukaryotic cells"],
+a:0,why:"Latency spreads the viral sequence through the whole cell line, and a stressor later triggers the switch to lysis."},
+{t:"viruses",k:"match",q:"Match each stage of the lysogenic cycle with its description.",
+pool:["Virus binds to a specific host receptor","An enzyme catalyses insertion of viral DNA into the host genome","Viral sequences are copied as the cell divides, with no virions produced","A stressor triggers the switch to the lytic cycle","The cell is destroyed and virions are released"],
+pairs:[["Attachment","Virus binds to a specific host receptor"],["Integration","An enzyme catalyses insertion of viral DNA into the host genome"],["Latency","Viral sequences are copied as the cell divides, with no virions produced"],["Induction","A stressor triggers the switch to the lytic cycle"],["Lysis","The cell is destroyed and virions are released"]],
+why:"Induction is the hinge between the two cycles, and it is usually triggered by stress to the host cell."},
+{t:"viruses",k:"mcq",q:"Which virus is capable of both lytic and lysogenic cycles?",
+o:["Coronavirus only","HIV and bacteriophage lambda","Only bacteriophages, never animal viruses","No virus can do both"],
+a:1,why:"HIV integrates into helper T cell DNA and can stay latent for years, which is why treatment cannot simply clear it."},
+{t:"viruses",k:"match",q:"Match each theory of viral origin with its claim.",
+pool:["Viruses existed as replicating units before cells did","Viruses began as transposable genetic elements inside cells that escaped and became encapsulated","Viruses were once symbiotic or parasitic cells that progressively lost cell components"],
+pairs:[["Virus-first theory","Viruses existed as replicating units before cells did"],["Escape theory","Viruses began as transposable genetic elements inside cells that escaped and became encapsulated"],["Regressive theory","Viruses were once symbiotic or parasitic cells that progressively lost cell components"]],
+why:"Virus-first is considered least likely, since viruses cannot replicate without cells to parasitise."},
+{t:"viruses",k:"mcq",q:"Why does the diversity of virus structures suggest several separate origins?",
+o:["Because viruses differ so much in genome type, capsid and envelope that a single common ancestor is hard to reconcile","Because all viruses have identical genomes","Because viruses cannot mutate","Because viruses have been fossilised in many different forms"],
+a:0,why:"Shared features such as obligate parasitism may then be convergent evolution under the same selection pressure."},
+{t:"viruses",k:"mcq",q:"Why is determining viral origins particularly difficult?",
+o:["Viruses are too fragile to fossilise, so there is no direct historical record","Viruses have no genetic material to compare","Viruses cannot be grown in a laboratory","Viruses evolve too slowly to compare"],
+a:0,why:"Without fossils, origin arguments rest on genomic comparison and inference alone."},
+{t:"viruses",k:"mcq",q:"What does the universality of the genetic code suggest about viruses?",
+o:["That their origins are connected to cellular life","That viruses evolved on a different planet","That viruses cannot infect eukaryotes","That viruses are alive"],
+a:0,why:"Using the same code lets viruses hijack host machinery, and it points to a shared origin with cells."},
+{t:"viruses",k:"multi",q:"Which factors allow viral genomes to evolve rapidly? Select all that apply.",
+o:["High mutation rates from unstable RNA and a lack of proofreading enzymes","Short generation times, with infectious cycles of roughly 8 to 72 hours","Large population sizes, with thousands of virions per cycle","Sexual reproduction between virions"],
+a:[0,1,2],why:"Viruses do not reproduce sexually, but reassortment during co-infection can shuffle gene segments."},
+{t:"viruses",k:"mcq",q:"Why do RNA viruses tend to mutate faster than DNA viruses?",
+o:["RNA is less stable and viral replication lacks proofreading enzymes","RNA is always double-stranded","RNA viruses replicate only once per year","RNA cannot be copied at all"],
+a:0,why:"No error correction plus a less stable molecule means errors accumulate every cycle, which is why HIV varies so much."},
+{t:"viruses",k:"mcq",q:"What is antigenic drift?",
+o:["Gradual change caused by accumulated point mutations, producing new seasonal strains","Sudden reassortment of gene segments when a cell is infected by two viruses","Movement of viruses between continents","The loss of the viral envelope over time"],
+a:0,why:"Drift is slow and continuous; shift is abrupt and produces new subtypes with pandemic potential."},
+{t:"viruses",k:"mcq",q:"What is antigenic shift?",
+o:["Point mutations accumulating over several seasons","Reassortment of gene segments when a host cell is infected by more than one virus, creating a new subtype","A change in the temperature at which a virus replicates","The gradual weakening of a virus over time"],
+a:1,why:"Because the change is large and sudden, populations may have no existing immunity."},
+{t:"viruses",k:"mcq",q:"Why must influenza vaccines be reformulated regularly?",
+o:["Because the virus evolves rapidly, so surface antigens change and old vaccines lose effectiveness","Because the vaccine expires after one week","Because influenza is a bacterium","Because vaccines cause antigenic shift"],
+a:0,why:"Rapid evolution lets the virus evade immune recognition built against earlier strains."},
+{t:"viruses",k:"multi",q:"Which are recognised approaches to controlling the spread of viral disease? Select all that apply.",
+o:["Updating vaccines to match circulating strains","Isolating or quarantining infectious individuals","Targeting vectors, for example by water chlorination or fumigation","Genetically engineering disease-resistant or sterile vectors","Treating viral infections with standard antibiotics"],
+a:[0,1,2,3],why:"Antibiotics target bacterial structures and processes, so they do nothing to viruses."},
+{t:"viruses",k:"mcq",q:"HIV averages about 0.34 mutations per replication cycle. What is the main consequence?",
+o:["The virus rapidly generates variants that can evade the immune system and drug treatment","The virus becomes harmless within weeks","The virus loses its ability to infect cells","The virus can no longer integrate into host DNA"],
+a:0,why:"High variation within a single patient is why combination therapy is used rather than a single drug."},
+{t:"viruses",k:"mcq",q:"Which statement about virus size is correct?",
+o:["Viruses vary in size but are all small, roughly 20 to 300 nm, and cannot grow","All viruses are exactly the same size","Viruses grow steadily throughout their infectious cycle","Viruses are larger than the cells they infect"],
+a:0,why:"Fixed size and no growth is one of the criteria that keeps them out of the living category."},
+{t:"viruses",k:"mcq",q:"A virus has a helical capsid, an envelope and single-stranded RNA, and infects epithelial cells. Which is it most likely to be?",
+o:["Bacteriophage lambda","Coronavirus","HIV","A non-enveloped DNA virus"],
+a:1,why:"HIV is icosahedral and infects helper T cells, and the phage is non-enveloped with double-stranded DNA."},
+{t:"viruses",k:"mcq",q:"During the lytic cycle, how are new virions released?",
+o:["By enzymes degrading the host cell membrane so the cell lyses","By exocytosis, without harming the cell","By passing through nuclear pores","By binding to host receptors from the inside"],
+a:0,why:"Destroying the host cell is what makes the lytic cycle so directly damaging to tissue."},
+{t:"viruses",k:"mcq",q:"Which feature of viruses is used as evidence in the argument that they are non-living, despite carrying genetic material?",
+o:["They lack metabolism, cannot replicate independently and cannot grow","They contain protein","They can be crystallised","They are found in every habitat"],
+a:0,why:"The functions of life are the standard, and viruses fail several of them outright."}
+);
+
+/* ================= ENGINE ================= */
+const TOPICS = [
+  {id:"origins",   name:"Origins of cells", sec:"s-origins"},
+  {id:"membranes", name:"Cell membranes",   sec:"s-membranes"},
+  {id:"structures",name:"Cell structures",  sec:"s-structures"},
+  {id:"signalling",name:"Cell signalling",  sec:"s-signalling"},
+  {id:"viruses",   name:"Viruses",          sec:"s-viruses"}
+];
+QBANK.forEach((q,i)=>q.id=i);
+const stats={}; TOPICS.forEach(t=>stats[t.id]={seen:0,right:0});
+let filter=new Set(TOPICS.map(t=>t.id));
+let mode="study";
+let S=null;              // active session
+const missedIds=new Set();
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function shuffled(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const topicName=id=>(TOPICS.find(t=>t.id===id)||{}).name||id;
+
+/* ---- masthead spine + rail ---- */
+function buildSpine(){
+  $("#spine").innerHTML=TOPICS.map(t=>{
+    const n=QBANK.filter(q=>q.t===t.id).length;
+    return `<li><button onclick="jumpTopic('${t.id}')" data-on="0" id="sp-${t.id}">
+      <span class="sp-name">${t.name}</span>
+      <span class="sp-bar"><i></i></span>
+      <span class="sp-stat">${n} questions</span></button></li>`;
+  }).join("");
+}
+function paintSpine(){
+  TOPICS.forEach(t=>{
+    const b=$("#sp-"+t.id); if(!b) return;
+    const s=stats[t.id], n=QBANK.filter(q=>q.t===t.id).length;
+    const pct=s.seen?Math.round(100*s.right/s.seen):0;
+    b.querySelector("i").style.width=(s.seen?pct:0)+"%";
+    b.querySelector(".sp-stat").textContent = s.seen? `${s.right}/${s.seen} correct · ${pct}%` : `${n} questions`;
+    b.dataset.on = s.seen? "1":"0";
+  });
+}
+function buildRail(){
+  $("#rail").innerHTML="<h2>Sections</h2><ol>"+TOPICS.map(t=>
+    `<li><a href="#${t.sec}" onclick="setMode('study')">${t.name}</a></li>`).join("")+"</ol>";
+}
+function jumpTopic(id){ filter=new Set([id]); setMode("practice"); buildChips(); restart(); }
+
+/* ---- mode switching ---- */
+function setMode(m){
+  mode=m;
+  ["study","practice","exam"].forEach(x=>{
+    $("#view-"+x).classList.toggle("hide", x!==m);
+    $("#tab-"+x).setAttribute("aria-selected", String(x===m));
+  });
+  if(m==="practice" && (!S||S.exam)) restart();
+  if(m!=="study") window.scrollTo({top:0});
+}
+function drill(id){ jumpTopic(id); }
+
+/* ---- topic chips ---- */
+function buildChips(){
+  $("#topicChips").innerHTML = TOPICS.map(t=>
+    `<button class="chip" data-on="${filter.has(t.id)?1:0}" onclick="toggleTopic('${t.id}')">${t.name}</button>`).join("")
+    + `<button class="chip" onclick="allTopics()">All topics</button>`;
+}
+function toggleTopic(id){
+  if(filter.has(id)&&filter.size>1) filter.delete(id); else filter.add(id);
+  buildChips(); restart();
+}
+function allTopics(){ filter=new Set(TOPICS.map(t=>t.id)); buildChips(); restart(); }
+
+/* ---- session ---- */
+function newSession(list,opts){
+  return {list:list, i:0, ans:new Array(list.length).fill(null), done:new Array(list.length).fill(false),
+          exam:!!(opts&&opts.exam), sel:null, right:0, host:(opts&&opts.host)||"#qhost"};
+}
+function restart(){
+  const pool=QBANK.filter(q=>filter.has(q.t));
+  S=newSession(shuffled(pool),{host:"#qhost"});
+  render();
+}
+function shuffleDeck(){ if(!S) return restart(); S.list=shuffled(S.list); S.i=0; S.ans.fill(null); S.done.fill(false); S.sel=null; S.right=0; render(); }
+function reviewMissed(){
+  const list=QBANK.filter(q=>missedIds.has(q.id));
+  if(!list.length){ $("#qhost").innerHTML='<div class="empty">Nothing missed yet. Get some questions wrong first, then this becomes your revision list.</div>'; return; }
+  S=newSession(shuffled(list),{host:"#qhost"}); render();
+}
+function startExam(n){
+  $("#examIntro").classList.add("hide");
+  $("#examHost").classList.remove("hide");
+  S=newSession(shuffled(QBANK).slice(0,n),{exam:true,host:"#examHost"});
+  render();
+}
+
+/* ---- rendering ---- */
+function render(){
+  const host=$(S.host);
+  if(S.i>=S.list.length){ host.innerHTML=results(); paintSpine(); return; }
+  const q=S.list[S.i], n=S.i+1, tot=S.list.length;
+  let body="";
+  if(q.k==="match"){
+    const opts=shuffled(q.pool.slice());
+    body=`<div class="matchgrid">`+q.pairs.map((p,i)=>
+      `<div class="mrow" id="mrow-${i}"><div class="mtext">${esc(p[0])}</div>
+        <select id="msel-${i}"><option value="">Choose…</option>${opts.map(o=>`<option value="${esc(o)}">${esc(o)}</option>`).join("")}</select></div>`).join("")+`</div>`;
+  } else {
+    const keys="ABCDEFGH";
+    body=`<ul class="opts">`+q.o.map((o,i)=>
+      `<li><button class="opt" id="opt-${i}" onclick="pick(${i})"><span class="key">${keys[i]}</span><span>${esc(o)}</span></button></li>`).join("")+`</ul>`;
+  }
+  const hint = q.k==="multi" ? '<p class="hintline">More than one answer is correct.</p>'
+             : q.k==="match" ? '<p class="hintline">Choose the best match for every row.</p>' : '';
+  host.innerHTML=`<div class="qcard">
+    <div class="qmeta"><span><b>${esc(topicName(q.t))}</b></span><span>${n} of ${tot}</span></div>
+    <p class="qtext">${esc(q.q)}</p>${hint}${body}
+    <div id="verdictSlot"></div>
+    <div class="nav-row" id="navRow">
+      ${q.k==="mcq"&&!S.exam?"":'<button class="pbtn solid" id="btnCheck" onclick="check()">'+(S.exam?"Next":"Check answer")+'</button>'}
+      ${S.exam?'':'<button class="pbtn" onclick="skip()">Skip</button>'}
+      <span class="kbd">${q.k==="mcq"?'<kbd>1</kbd>–<kbd>4</kbd> to answer · ':''}<kbd>Enter</kbd> to continue</span>
+    </div></div>`;
+  S.sel = (q.k==="multi")?[]:null;
+  updateRunStat();
+}
+function updateRunStat(){
+  if(!S||S.exam) return;
+  const seen=S.done.filter(Boolean).length;
+  $("#runStat").textContent = seen? `${S.right}/${seen} correct this run` : `${S.list.length} questions loaded`;
+}
+function pick(i){
+  const q=S.list[S.i];
+  if(S.done[S.i]) return;
+  if(q.k==="multi"){
+    const at=S.sel.indexOf(i);
+    if(at>=0) S.sel.splice(at,1); else S.sel.push(i);
+    q.o.forEach((_,j)=>$("#opt-"+j).dataset.sel = S.sel.includes(j)?"1":"0");
+  } else {
+    S.sel=i;
+    q.o.forEach((_,j)=>$("#opt-"+j).dataset.sel = (j===i)?"1":"0");
+    if(!S.exam) check();
+  }
+}
+function correctOf(q){ return q.k==="multi"? q.a.slice().sort((a,b)=>a-b) : q.a; }
+function evaluate(q){
+  if(q.k==="match"){
+    let all=true;
+    q.pairs.forEach((p,i)=>{ const v=$("#msel-"+i).value; if(v!==p[1]) all=false; });
+    return all;
+  }
+  if(q.k==="multi"){
+    const s=(S.sel||[]).slice().sort((a,b)=>a-b), c=correctOf(q);
+    return s.length===c.length && s.every((v,i)=>v===c[i]);
+  }
+  return S.sel===q.a;
+}
+function check(){
+  const q=S.list[S.i];
+  if(S.done[S.i]){ next(); return; }
+  if(q.k==="match"){
+    const blank=q.pairs.some((p,i)=>!$("#msel-"+i).value);
+    if(blank){ $("#verdictSlot").innerHTML='<p class="hintline" style="margin:14px 0 0">Fill in every row before checking.</p>'; return; }
+  }
+  if(q.k!=="match" && (S.sel===null||(q.k==="multi"&&!S.sel.length))) return;
+  const ok=evaluate(q);
+  if(S.exam){ S.ans[S.i]=ok; S.done[S.i]=true; if(ok)S.right++; next(); return; }
+  S.done[S.i]=true; S.ans[S.i]=ok;
+  stats[q.t].seen++; if(ok){ stats[q.t].right++; S.right++; missedIds.delete(q.id);} else missedIds.add(q.id);
+  showFeedback(q,ok); paintSpine(); updateRunStat();
+}
+function showFeedback(q,ok){
+  if(q.k==="match"){
+    q.pairs.forEach((p,i)=>{
+      const row=$("#mrow-"+i), sel=$("#msel-"+i);
+      const good = sel.value===p[1];
+      row.dataset.state = good?"right":"wrong";
+      sel.disabled=true;
+      if(!good) row.insertAdjacentHTML("beforeend",`<div class="mfix">Correct: ${esc(p[1])}</div>`);
+    });
+  } else {
+    const c=q.k==="multi"?q.a:[q.a];
+    q.o.forEach((_,j)=>{
+      const b=$("#opt-"+j); b.disabled=true;
+      if(c.includes(j)) b.dataset.state="right";
+      else if((q.k==="multi"? (S.sel||[]).includes(j) : S.sel===j)) b.dataset.state="wrong";
+    });
+  }
+  $("#verdictSlot").innerHTML=`<div class="verdict" data-v="${ok?'right':'wrong'}">
+    <h5>${ok?"Correct":"Not quite"}</h5><p>${esc(q.why)}</p></div>`;
+  $("#navRow").innerHTML=`<button class="pbtn solid" onclick="next()">Next question</button>
+    <span class="kbd"><kbd>Enter</kbd> for the next one</span>`;
+}
+function skip(){ next(); }
+function next(){ S.i++; render(); }
+
+function results(){
+  const tot=S.list.length, right=S.ans.filter(a=>a===true).length;
+  const pct=tot?Math.round(100*right/tot):0;
+  const wrong=S.list.filter((q,i)=>S.ans[i]===false);
+  const line = pct>=85? "Solid. Push into the questions you skipped or missed."
+            : pct>=65? "Reasonable, with clear gaps. Reread the sections listed below."
+            : "Worth going back to the notes before drilling again.";
+  const back = S.exam ? `<button class="pbtn solid" onclick="location.reload()">New mock test</button>`
+                      : `<button class="pbtn solid" onclick="restart()">Go again</button>
+                         <button class="pbtn" onclick="reviewMissed()">Review missed only</button>`;
+  return `<div class="result">
+    <div class="score">${right}<small> / ${tot}</small></div>
+    <p style="font-family:var(--serif);font-size:18px;margin:10px 0 20px;color:var(--ink-soft)">${pct}% correct. ${line}</p>
+    <div class="nav-row" style="margin-bottom:18px">${back}</div>
+    ${wrong.length?`<h3 style="font-size:16px;margin:22px 0 8px">Questions you missed</h3>`+
+      wrong.map(q=>`<div class="miss"><p>${esc(q.q)}</p><em>${esc(topicName(q.t))}</em><p style="font-size:15px;color:var(--ink-soft);margin-top:6px">${esc(q.why)}</p></div>`).join("")
+      :`<p style="font-family:var(--serif)">Nothing missed.</p>`}
+  </div>`;
+}
+
+/* ---- keyboard ---- */
+document.addEventListener("keydown",e=>{
+  if(mode==="study"||!S) return;
+  if(e.target.tagName==="SELECT") return;
+  const q=S.list[S.i]; if(!q) return;
+  if(e.key==="Enter"){ e.preventDefault(); if(S.done[S.i]) next(); else check(); return; }
+  if(/^[1-8]$/.test(e.key)&&q.k!=="match"&&!S.done[S.i]){
+    const i=+e.key-1; if(i<q.o.length){ e.preventDefault(); pick(i); }
+  }
+});
+
+buildSpine(); buildRail(); buildChips(); paintSpine();
+
+/* ---- scrollspy ---- */
+try{
+  const spy=new IntersectionObserver(es=>{
+    es.forEach(en=>{ if(en.isIntersecting){
+      document.querySelectorAll("#rail a").forEach(a=>a.classList.toggle("on", a.getAttribute("href")==="#"+en.target.id));
+    }});
+  },{rootMargin:"-15% 0px -70% 0px"});
+  TOPICS.forEach(t=>{const el=document.getElementById(t.sec); if(el) spy.observe(el);});
+}catch(e){/* scrollspy is optional */}
+</script>
+</body>
+</html>
